@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>自由之思，开源之行</title>
+  
+  <subtitle>秉承理查德·斯托曼与林纳斯·托瓦兹的理念</subtitle>
+  <link href="https://duanbiao2000.github.io/atom.xml" rel="self"/>
+  
+  <link href="https://duanbiao2000.github.io/"/>
+  <updated>2024-10-26T12:21:59.134Z</updated>
+  <id>https://duanbiao2000.github.io/</id>
+  
+  <author>
+    <name>DevCamb</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>未来证明</title>
+    <link href="https://duanbiao2000.github.io/2024/10/26/wei-lai-zheng-ming/"/>
+    <id>https://duanbiao2000.github.io/2024/10/26/wei-lai-zheng-ming/</id>
+    <published>2024-10-26T12:21:59.134Z</published>
+    <updated>2024-10-26T12:21:59.134Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;信息过多,反而会降低你的学习效率&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="Diary" scheme="https://duanbiao2000.github.io/categories/Diary/"/>
+    
+    
+    <category term="Inspiration" scheme="https://duanbiao2000.github.io/tags/Inspiration/"/>
+    
+    <category term="Reflections" scheme="https://duanbiao2000.github.io/tags/Reflections/"/>
+    
+    <category term="关键词" scheme="https://duanbiao2000.github.io/tags/%E5%85%B3%E9%94%AE%E8%AF%8D/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>How to Learn More Effectively</title>
+    <link href="https://duanbiao2000.github.io/2024/10/25/how-to-learn-more-effectively/"/>
+    <id>https://duanbiao2000.github.io/2024/10/25/how-to-learn-more-effectively/</id>
+    <published>2024-10-25T16:00:00.000Z</published>
+    <updated>2024-10-26T12:21:59.134Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;Information overload can actually hinder our learning efficiency.&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="Diary" scheme="https://duanbiao2000.github.io/categories/Diary/"/>
+    
+    
+    <category term="Effectively" scheme="https://duanbiao2000.github.io/tags/Effectively/"/>
+    
+    <category term="prioritize" scheme="https://duanbiao2000.github.io/tags/prioritize/"/>
+    
+    <category term="简明" scheme="https://duanbiao2000.github.io/tags/%E7%AE%80%E6%98%8E/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>How to Stand Out</title>
+    <link href="https://duanbiao2000.github.io/2024/10/25/how-to-stand-out/"/>
+    <id>https://duanbiao2000.github.io/2024/10/25/how-to-stand-out/</id>
+    <published>2024-10-25T16:00:00.000Z</published>
+    <updated>2024-10-26T12:21:59.134Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;The key to standing out lies in &lt;strong&gt;self-marketing&lt;/strong&gt;.&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="Midset" scheme="https://duanbiao2000.github.io/categories/Midset/"/>
+    
+    
+    <category term="Consiistency" scheme="https://duanbiao2000.github.io/tags/Consiistency/"/>
+    
+    <category term="SoftSkills" scheme="https://duanbiao2000.github.io/tags/SoftSkills/"/>
+    
+    <category term="CoreMessage" scheme="https://duanbiao2000.github.io/tags/CoreMessage/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>The Art of Developer Self-Marketing</title>
+    <link href="https://duanbiao2000.github.io/2024/10/25/the-art-of-developer-self-marketing/"/>
+    <id>https://duanbiao2000.github.io/2024/10/25/the-art-of-developer-self-marketing/</id>
+    <published>2024-10-25T16:00:00.000Z</published>
+    <updated>2024-10-26T12:21:59.134Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;Standing Out in a Digital World&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="Midset" scheme="https://duanbiao2000.github.io/categories/Midset/"/>
+    
+    
+    <category term="Consiistency" scheme="https://duanbiao2000.github.io/tags/Consiistency/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>LazyVim按键绑定</title>
+    <link href="https://duanbiao2000.github.io/2024/10/25/lazyvim-an-jian/"/>
+    <id>https://duanbiao2000.github.io/2024/10/25/lazyvim-an-jian/</id>
+    <published>2024-10-25T05:41:00.000Z</published>
+    <updated>2024-10-26T12:21:59.134Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;LazyVim 配置框架键盘映射（key mappings），用于增强 Vim 的功能和改善用户体验。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="Tools" scheme="https://duanbiao2000.github.io/categories/Tools/"/>
+    
+    
+    <category term="简明" scheme="https://duanbiao2000.github.io/tags/%E7%AE%80%E6%98%8E/"/>
+    
+    <category term="Vim" scheme="https://duanbiao2000.github.io/tags/Vim/"/>
+    
+    <category term="LazyVim" scheme="https://duanbiao2000.github.io/tags/LazyVim/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Mardown App Plan</title>
+    <link href="https://duanbiao2000.github.io/2024/10/24/mardown-app-plan/"/>
+    <id>https://duanbiao2000.github.io/2024/10/24/mardown-app-plan/</id>
+    <published>2024-10-24T16:00:00.000Z</published>
+    <updated>2024-10-26T12:21:59.134Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;Discover top Markdown editors to enhance team collaboration and individual writing experiences.&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="Diary" scheme="https://duanbiao2000.github.io/categories/Diary/"/>
+    
+    
+    <category term="MVP" scheme="https://duanbiao2000.github.io/tags/MVP/"/>
+    
+    <category term="PRD" scheme="https://duanbiao2000.github.io/tags/PRD/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Mardown App Plan汉化</title>
+    <link href="https://duanbiao2000.github.io/2024/10/24/mardown-app-plan-han-hua/"/>
+    <id>https://duanbiao2000.github.io/2024/10/24/mardown-app-plan-han-hua/</id>
+    <published>2024-10-24T16:00:00.000Z</published>
+    <updated>2024-10-26T12:21:59.134Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;探索适用于Mac的顶级Markdown编辑器，旨在提升团队协作和个人写作体验。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="Diary" scheme="https://duanbiao2000.github.io/categories/Diary/"/>
+    
+    
+    <category term="MVP" scheme="https://duanbiao2000.github.io/tags/MVP/"/>
+    
+    <category term="PRD" scheme="https://duanbiao2000.github.io/tags/PRD/"/>
+    
+    <category term="定制化" scheme="https://duanbiao2000.github.io/tags/%E5%AE%9A%E5%88%B6%E5%8C%96/"/>
+    
+  </entry>
+  
+</feed>
