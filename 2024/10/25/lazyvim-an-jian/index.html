@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 7.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"duanbiao2000.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="LazyVim 配置框架键盘映射（key mappings），用于增强 Vim 的功能和改善用户体验。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LazyVim按键绑定">
+<meta property="og:url" content="https://duanbiao2000.github.io/2024/10/25/lazyvim-an-jian/index.html">
+<meta property="og:site_name" content="自由之思，开源之行">
+<meta property="og:description" content="LazyVim 配置框架键盘映射（key mappings），用于增强 Vim 的功能和改善用户体验。">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-10-25T04:26:00.000Z">
+<meta property="article:modified_time" content="2024-11-12T16:37:52.864Z">
+<meta property="article:author" content="DevCamb">
+<meta property="article:tag" content="简明">
+<meta property="article:tag" content="Vim">
+<meta property="article:tag" content="LazyVim">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://duanbiao2000.github.io/2024/10/25/lazyvim-an-jian/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>LazyVim按键绑定 | 自由之思，开源之行</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+<link rel="alternate" href="/atom.xml" title="自由之思，开源之行" type="application/atom+xml">
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">自由之思，开源之行</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">秉承理查德·斯托曼与林纳斯·托瓦兹的理念</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://duanbiao2000.github.io/2024/10/25/lazyvim-an-jian/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="DevCamb">
+      <meta itemprop="description" content="在这个空间里，我们追求技术的自由与开源精神，正如理查德·斯托曼所言：“自由软件关乎自由，而非价格。” 同时，我们也将探索技术的本质，遵循林纳斯·托瓦兹的名言：“创造好点子最简单的方式是先有很多点子。”">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="自由之思，开源之行">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          LazyVim按键绑定
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2024-10-25 12:26:00" itemprop="dateCreated datePublished" datetime="2024-10-25T12:26:00+08:00">2024-10-25</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2024-11-13 00:37:52" itemprop="dateModified" datetime="2024-11-13T00:37:52+08:00">2024-11-13</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Tools/" itemprop="url" rel="index"><span itemprop="name">Tools</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>LazyVim 配置框架键盘映射（key mappings），用于增强 Vim 的功能和改善用户体验。</p>
+<span id="more"></span>
+
+<h3 id="基本导航"><a href="#基本导航" class="headerlink" title="基本导航"></a>基本导航</h3><ul>
+<li>改善上下移动（<code>j</code>、<code>k</code>、<code>&lt;Up&gt;</code>、<code>&lt;Down&gt;</code>）：在普通和可视模式下，如果没有计数，则使用 <code>gj</code> 和 <code>gk</code> 来避免行间的空白字符。</li>
+<li>窗口切换（<code>&lt;C-h&gt;</code>、<code>&lt;C-j&gt;</code>、<code>&lt;C-k&gt;</code>、<code>&lt;C-l&gt;</code>）：使用 <code>&lt;C-h&gt;</code> 移动到左边窗口，<code>&lt;C-j&gt;</code> 移动到下方窗口，<code>&lt;C-k&gt;</code> 移动到上方窗口，<code>&lt;C-l&gt;</code> 移动到右边窗口。</li>
+</ul>
+<h3 id="窗口调整"><a href="#窗口调整" class="headerlink" title="窗口调整"></a>窗口调整</h3><ul>
+<li>使用 <code>&lt;C-箭头键&gt;</code> 调整窗口大小。</li>
+</ul>
+<h3 id="行移动"><a href="#行移动" class="headerlink" title="行移动"></a>行移动</h3><ul>
+<li>使用 <code>&lt;A-j&gt;</code> 和 <code>&lt;A-k&gt;</code> 在普通和插入模式下移动行。</li>
+</ul>
+<h3 id="缓冲区操作"><a href="#缓冲区操作" class="headerlink" title="缓冲区操作"></a>缓冲区操作</h3><ul>
+<li>使用 <code>&lt;S-h&gt;</code> 和 <code>&lt;S-l&gt;</code> 在缓冲区之间切换。</li>
+<li>使用 <code>[b</code> 和 <code>]b</code> 切换到前一个和下一个缓冲区。</li>
+<li>使用 <code>&lt;leader&gt;bb</code> 和 <code>&lt;leader&gt;</code> 快速切换到其他缓冲区。</li>
+<li>使用 <code>&lt;leader&gt;bd</code> 删除缓冲区。</li>
+<li>使用 <code>&lt;leader&gt;bD&gt;</code> 删除缓冲区并关闭窗口。</li>
+</ul>
+<h3 id="搜索和高亮"><a href="#搜索和高亮" class="headerlink" title="搜索和高亮"></a>搜索和高亮</h3><ul>
+<li>使用 <code>&lt;esc&gt;</code> 清除搜索高亮。</li>
+<li>使用 <code>&lt;leader&gt;ur</code> 重绘屏幕、清除搜索高亮和更新差异。</li>
+</ul>
+<h3 id="搜索结果导航"><a href="#搜索结果导航" class="headerlink" title="搜索结果导航"></a>搜索结果导航</h3><ul>
+<li>使用 <code>n</code> 和 <code>N</code> 以及它们的可视模式和操作符模式版本来导航搜索结果。</li>
+</ul>
+<h3 id="撤销和保存"><a href="#撤销和保存" class="headerlink" title="撤销和保存"></a>撤销和保存</h3><ul>
+<li>在插入模式下使用 <code>,</code>、<code>.</code>、<code>;</code> 来添加撤销断点。</li>
+<li>使用 <code>&lt;C-s&gt;</code> 保存文件。</li>
+</ul>
+<h3 id="关键词查找"><a href="#关键词查找" class="headerlink" title="关键词查找"></a>关键词查找</h3><ul>
+<li>使用 <code>&lt;leader&gt;K</code> 进行关键词查找。</li>
+</ul>
+<h3 id="缩进和注释"><a href="#缩进和注释" class="headerlink" title="缩进和注释"></a>缩进和注释</h3><ul>
+<li>使用 <code>&lt;</code> 和 <code>&gt;</code> 在可视模式下改变缩进。</li>
+<li>使用 <code>gco</code> 和 <code>gcO</code> 在普通模式下添加注释。</li>
+</ul>
+<h3 id="LazyVim-功能"><a href="#LazyVim-功能" class="headerlink" title="LazyVim 功能"></a>LazyVim 功能</h3><ul>
+<li>使用 <code>&lt;leader&gt;l</code> 调用 LazyVim 的一些功能。</li>
+</ul>
+<h3 id="文件操作"><a href="#文件操作" class="headerlink" title="文件操作"></a>文件操作</h3><ul>
+<li>使用 <code>&lt;leader&gt;fn</code> 创建新文件。</li>
+</ul>
+<h3 id="快速修复和错误导航"><a href="#快速修复和错误导航" class="headerlink" title="快速修复和错误导航"></a>快速修复和错误导航</h3><ul>
+<li>使用 <code>&lt;leader&gt;cd</code> 显示行诊断。</li>
+<li>使用 <code>]d</code>、<code>[d</code>、<code>]e</code>、<code>[e</code>、<code>]w</code>、<code>[w</code> 导航到下一个/上一个诊断/错误/警告。</li>
+</ul>
+<h3 id="选项切换"><a href="#选项切换" class="headerlink" title="选项切换"></a>选项切换</h3><ul>
+<li>使用 <code>&lt;leader&gt;u</code> 前缀来切换各种选项，如格式化、拼写检查、换行、相对编号、诊断显示等。</li>
+</ul>
+<h3 id="Git-功能"><a href="#Git-功能" class="headerlink" title="Git 功能"></a>Git 功能</h3><ul>
+<li>使用 <code>&lt;leader&gt;gg</code>、<code>&lt;leader&gt;gG</code>、<code>&lt;leader&gt;gb</code>、<code>&lt;leader&gt;gB</code> 进行 Git 操作，如打开 Lazygit、浏览 Git 历史等。</li>
+</ul>
+<h3 id="退出和终端"><a href="#退出和终端" class="headerlink" title="退出和终端"></a>退出和终端</h3><ul>
+<li>使用 <code>&lt;leader&gt;qq</code> 退出所有窗口。</li>
+<li>使用 <code>&lt;leader&gt;ft</code> 和 <code>&lt;leader&gt;fT</code> 打开终端。</li>
+</ul>
+<h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><ul>
+<li>使用 <code>&lt;leader&gt;L</code> 查看 LazyVim 更新日志。</li>
+<li>使用 <code>&lt;leader&gt;w</code> 进行窗口操作，如分割和删除窗口。</li>
+<li>使用 <code>&lt;leader&gt;&lt;tab&gt;</code> 前缀进行标签页操作。</li>
+</ul>
+<h2 id="进阶"><a href="#进阶" class="headerlink" title="进阶"></a>进阶</h2><p>这是一个包含多种常用键映射的代码段，下面按照功能类别进行了分类列举，尽量完整：</p>
+<h3 id="1-光标移动和窗口导航"><a href="#1-光标移动和窗口导航" class="headerlink" title="1. 光标移动和窗口导航"></a>1. <strong>光标移动和窗口导航</strong></h3><ul>
+<li><p><strong>上下移动</strong></p>
+<ul>
+<li><code>j</code> / <code>&lt;Down&gt;</code>: 根据 <code>v:count</code> 决定是普通 <code>j</code> 还是 <code>gj</code> (处理软换行)。</li>
+<li><code>k</code> / <code>&lt;Up&gt;</code>: 根据 <code>v:count</code> 决定是普通 <code>k</code> 还是 <code>gk</code> (处理软换行)。</li>
+</ul>
+</li>
+<li><p><strong>窗口间导航</strong></p>
+<ul>
+<li><code>&lt;C-h&gt;</code>: 跳转到左侧窗口。</li>
+<li><code>&lt;C-j&gt;</code>: 跳转到下方窗口。</li>
+<li><code>&lt;C-k&gt;</code>: 跳转到上方窗口。</li>
+<li><code>&lt;C-l&gt;</code>: 跳转到右侧窗口。</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-窗口调整"><a href="#2-窗口调整" class="headerlink" title="2. 窗口调整"></a>2. <strong>窗口调整</strong></h3><ul>
+<li><strong>调整窗口大小</strong><ul>
+<li><code>&lt;C-Up&gt;</code>: 增加窗口高度。</li>
+<li><code>&lt;C-Down&gt;</code>: 减小窗口高度。</li>
+<li><code>&lt;C-Left&gt;</code>: 减小窗口宽度。</li>
+<li><code>&lt;C-Right&gt;</code>: 增加窗口宽度。</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-行和文本移动"><a href="#3-行和文本移动" class="headerlink" title="3. 行和文本移动"></a>3. <strong>行和文本移动</strong></h3><ul>
+<li><strong>移动行</strong><ul>
+<li><code>&lt;A-j&gt;</code>: 向下移动当前行/选中的文本。</li>
+<li><code>&lt;A-k&gt;</code>: 向上移动当前行/选中的文本。</li>
+</ul>
+</li>
+</ul>
+<h3 id="4-缓冲区管理"><a href="#4-缓冲区管理" class="headerlink" title="4. 缓冲区管理"></a>4. <strong>缓冲区管理</strong></h3><ul>
+<li><strong>切换缓冲区</strong><ul>
+<li><code>&lt;S-h&gt;</code> / <code>[b]</code>: 切换到上一个缓冲区。</li>
+<li><code>&lt;S-l&gt;</code> / <code>]b</code>: 切换到下一个缓冲区。</li>
+<li><code>&lt;leader&gt;bb</code>: 切换到其他缓冲区。</li>
+<li><code>&lt;leader&gt;bd</code>: 删除当前缓冲区。</li>
+<li><code>&lt;leader&gt;bD</code>: 删除缓冲区并关闭窗口。</li>
+</ul>
+</li>
+</ul>
+<h3 id="5-搜索和高亮"><a href="#5-搜索和高亮" class="headerlink" title="5. 搜索和高亮"></a>5. <strong>搜索和高亮</strong></h3><ul>
+<li><p><strong>清除搜索</strong></p>
+<ul>
+<li><code>&lt;esc&gt;</code>: 退出插入模式并清除搜索高亮。</li>
+<li><code>&lt;leader&gt;ur</code>: 清除搜索、更新 diff 并重绘屏幕。</li>
+</ul>
+</li>
+<li><p><strong>搜索结果</strong></p>
+<ul>
+<li><code>n</code> / <code>N</code>: 跳转到下一个/上一个搜索结果，并居中显示。</li>
+</ul>
+</li>
+</ul>
+<h3 id="6-文件操作"><a href="#6-文件操作" class="headerlink" title="6. 文件操作"></a>6. <strong>文件操作</strong></h3><ul>
+<li><p><strong>保存文件</strong></p>
+<ul>
+<li><code>&lt;C-s&gt;</code>: 保存文件。</li>
+</ul>
+</li>
+<li><p><strong>新建文件</strong></p>
+<ul>
+<li><code>&lt;leader&gt;fn</code>: 创建新文件。</li>
+</ul>
+</li>
+</ul>
+<h3 id="7-格式化"><a href="#7-格式化" class="headerlink" title="7. 格式化"></a>7. <strong>格式化</strong></h3><ul>
+<li><strong>格式化代码</strong><ul>
+<li><code>&lt;leader&gt;cf</code>: 强制格式化当前文件。</li>
+</ul>
+</li>
+</ul>
+<h3 id="8-诊断信息"><a href="#8-诊断信息" class="headerlink" title="8. 诊断信息"></a>8. <strong>诊断信息</strong></h3><ul>
+<li><p><strong>诊断跳转</strong></p>
+<ul>
+<li><code>[d]</code> / <code>]d</code>: 跳转到上一个/下一个诊断信息。</li>
+<li><code>[e]</code> / <code>]e</code>: 跳转到上一个/下一个错误。</li>
+<li><code>[w]</code> / <code>]w</code>: 跳转到上一个/下一个警告。</li>
+</ul>
+</li>
+<li><p><strong>显示诊断信息</strong></p>
+<ul>
+<li><code>&lt;leader&gt;cd</code>: 显示当前行的诊断信息浮窗。</li>
+</ul>
+</li>
+</ul>
+<h3 id="9-评论"><a href="#9-评论" class="headerlink" title="9. 评论"></a>9. <strong>评论</strong></h3><ul>
+<li><strong>添加注释</strong><ul>
+<li><code>gco</code>: 在当前行下方添加注释。</li>
+<li><code>gcO</code>: 在当前行上方添加注释。</li>
+</ul>
+</li>
+</ul>
+<h3 id="10-快速修复和列表"><a href="#10-快速修复和列表" class="headerlink" title="10. 快速修复和列表"></a>10. <strong>快速修复和列表</strong></h3><ul>
+<li><strong>快速修复列表</strong><ul>
+<li><code>&lt;leader&gt;xq</code>: 打开快速修复列表。</li>
+<li><code>[q]</code> / <code>]q</code>: 跳转到上一个/下一个快速修复项。</li>
+</ul>
+</li>
+</ul>
+<h3 id="11-Git-操作"><a href="#11-Git-操作" class="headerlink" title="11. Git 操作"></a>11. <strong>Git 操作</strong></h3><ul>
+<li><p><strong>Lazygit</strong></p>
+<ul>
+<li><code>&lt;leader&gt;gg</code>: 在项目根目录启动 Lazygit。</li>
+<li><code>&lt;leader&gt;gG</code>: 在当前工作目录启动 Lazygit。</li>
+</ul>
+</li>
+<li><p><strong>Git 操作</strong></p>
+<ul>
+<li><code>&lt;leader&gt;gb</code>: 显示当前行的 Git Blame 信息。</li>
+<li><code>&lt;leader&gt;gf</code>: 显示当前文件的 Git 历史。</li>
+</ul>
+</li>
+</ul>
+<h3 id="12-终端操作"><a href="#12-终端操作" class="headerlink" title="12. 终端操作"></a>12. <strong>终端操作</strong></h3><ul>
+<li><p><strong>浮动终端</strong></p>
+<ul>
+<li><code>&lt;leader&gt;ft</code>: 在项目根目录打开终端。</li>
+<li><code>&lt;leader&gt;fT</code>: 在当前工作目录打开终端。</li>
+</ul>
+</li>
+<li><p><strong>终端模式切换</strong></p>
+<ul>
+<li><code>&lt;esc&gt;&lt;esc&gt;</code>: 退出终端模式进入普通模式。</li>
+</ul>
+</li>
+</ul>
+<h3 id="13-选项切换"><a href="#13-选项切换" class="headerlink" title="13. 选项切换"></a>13. <strong>选项切换</strong></h3><ul>
+<li><strong>显示切换</strong><ul>
+<li><code>&lt;leader&gt;us</code>: 开启/关闭拼写检查。</li>
+<li><code>&lt;leader&gt;uw</code>: 开启/关闭自动换行。</li>
+<li><code>&lt;leader&gt;uL</code>: 开启/关闭相对行号。</li>
+<li><code>&lt;leader&gt;ud</code>: 开启/关闭诊断信息。</li>
+</ul>
+</li>
+</ul>
+<h3 id="14-退出和其他"><a href="#14-退出和其他" class="headerlink" title="14. 退出和其他"></a>14. <strong>退出和其他</strong></h3><ul>
+<li><p><strong>退出</strong></p>
+<ul>
+<li><code>&lt;leader&gt;qq</code>: 退出所有窗口。</li>
+</ul>
+</li>
+<li><p><strong>高亮位置</strong></p>
+<ul>
+<li><code>&lt;leader&gt;ui</code>: 显示光标下的位置高亮信息。</li>
+</ul>
+</li>
+</ul>
+<p>这些键位映射针对日常开发需求进行了优化，涵盖了窗口管理、文件操作、搜索导航、代码格式化等各个方面。</p>
+<h1 id="LazyVim-按键映射总览"><a href="#LazyVim-按键映射总览" class="headerlink" title="LazyVim 按键映射总览"></a>LazyVim 按键映射总览</h1><h2 id="基础移动"><a href="#基础移动" class="headerlink" title="基础移动"></a>基础移动</h2><ul>
+<li><code>j</code>/<code>k</code> - 智能向下/向上移动(考虑到换行)</li>
+<li><code>&lt;Down&gt;</code>/<code>&lt;Up&gt;</code> - 智能向下/向上移动</li>
+<li><code>&lt;C-h/j/k/l&gt;</code> - 在窗口间移动(左/下/上/右)</li>
+</ul>
+<h2 id="窗口操作"><a href="#窗口操作" class="headerlink" title="窗口操作"></a>窗口操作</h2><ul>
+<li><code>&lt;C-Up/Down&gt;</code> - 增加/减少窗口高度</li>
+<li><code>&lt;C-Left/Right&gt;</code> - 减少/增加窗口宽度</li>
+<li><code>&lt;leader&gt;w</code> - 窗口命令前缀</li>
+<li><code>&lt;leader&gt;-</code> - 在下方分割窗口</li>
+<li><code>&lt;leader&gt;|</code> - 在右侧分割窗口</li>
+<li><code>&lt;leader&gt;wd</code> - 删除当前窗口</li>
+<li><code>&lt;leader&gt;wm</code> - 切换窗口最大化</li>
+</ul>
+<h2 id="文本编辑"><a href="#文本编辑" class="headerlink" title="文本编辑"></a>文本编辑</h2><ul>
+<li><code>&lt;A-j/k&gt;</code> - 在普通模式下移动当前行</li>
+<li><code>&lt;A-j/k&gt;</code> - 在插入模式下移动当前行</li>
+<li><code>&lt;A-j/k&gt;</code> - 在可视模式下移动选中行</li>
+<li><code>&lt;</code>/<code>&gt;</code> - 缩进/取消缩进(可视模式)</li>
+<li><code>,</code>/<code>.</code>/<code>;</code> - 在这些字符后添加撤销断点</li>
+</ul>
+<h2 id="Buffer操作"><a href="#Buffer操作" class="headerlink" title="Buffer操作"></a>Buffer操作</h2><ul>
+<li><code>&lt;S-h/l&gt;</code> - 前一个/后一个buffer</li>
+<li><code>[b/]b</code> - 前一个/后一个buffer</li>
+<li><code>&lt;leader&gt;bb</code> - 切换到其他buffer</li>
+<li>`<leader>``` - 切换到其他buffer</leader></li>
+<li><code>&lt;leader&gt;bd</code> - 删除buffer</li>
+<li><code>&lt;leader&gt;bD</code> - 删除buffer和窗口</li>
+</ul>
+<h2 id="搜索和替换"><a href="#搜索和替换" class="headerlink" title="搜索和替换"></a>搜索和替换</h2><ul>
+<li><code>&lt;esc&gt;</code> - 清除搜索高亮</li>
+<li><code>n/N</code> - 下一个/上一个搜索结果(优化版本)</li>
+<li><code>&lt;leader&gt;ur</code> - 重绘/清除搜索高亮/更新差异</li>
+</ul>
+<h2 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h2><ul>
+<li><code>gco</code> - 在下方添加注释</li>
+<li><code>gcO</code> - 在上方添加注释</li>
+</ul>
+<h2 id="文件操作-1"><a href="#文件操作-1" class="headerlink" title="文件操作"></a>文件操作</h2><ul>
+<li><code>&lt;C-s&gt;</code> - 保存文件</li>
+<li><code>&lt;leader&gt;fn</code> - 新建文件</li>
+</ul>
+<h2 id="诊断和错误"><a href="#诊断和错误" class="headerlink" title="诊断和错误"></a>诊断和错误</h2><ul>
+<li><code>&lt;leader&gt;cd</code> - 显示当前行诊断信息</li>
+<li><code>]d/[d</code> - 下一个/上一个诊断</li>
+<li><code>]e/[e</code> - 下一个/上一个错误</li>
+<li><code>]w/[w</code> - 下一个/上一个警告</li>
+<li><code>&lt;leader&gt;xl</code> - 打开位置列表</li>
+<li><code>&lt;leader&gt;xq</code> - 打开快速修复列表</li>
+<li><code>[q/]q</code> - 上一个/下一个快速修复项</li>
+</ul>
+<h2 id="Git操作"><a href="#Git操作" class="headerlink" title="Git操作"></a>Git操作</h2><ul>
+<li><code>&lt;leader&gt;gg</code> - 在根目录打开Lazygit</li>
+<li><code>&lt;leader&gt;gG</code> - 在当前目录打开Lazygit</li>
+<li><code>&lt;leader&gt;gb</code> - Git blame当前行</li>
+<li><code>&lt;leader&gt;gB</code> - Git浏览</li>
+<li><code>&lt;leader&gt;gf</code> - 查看当前文件历史</li>
+<li><code>&lt;leader&gt;gl</code> - 查看Git日志(根目录)</li>
+<li><code>&lt;leader&gt;gL</code> - 查看Git日志(当前目录)</li>
+</ul>
+<h2 id="终端"><a href="#终端" class="headerlink" title="终端"></a>终端</h2><ul>
+<li><code>&lt;leader&gt;ft</code> - 打开终端(根目录)</li>
+<li><code>&lt;leader&gt;fT</code> - 打开终端(当前目录)</li>
+<li><code>&lt;c-/&gt;</code> - 打开终端(根目录)</li>
+<li>终端模式下:<ul>
+<li><code>&lt;esc&gt;&lt;esc&gt;</code> - 进入普通模式</li>
+<li><code>&lt;C-h/j/k/l&gt;</code> - 窗口导航</li>
+<li><code>&lt;C-/&gt;</code> - 隐藏终端</li>
+</ul>
+</li>
+</ul>
+<h2 id="标签页"><a href="#标签页" class="headerlink" title="标签页"></a>标签页</h2><ul>
+<li><code>&lt;leader&gt;&lt;tab&gt;l</code> - 最后一个标签</li>
+<li><code>&lt;leader&gt;&lt;tab&gt;f</code> - 第一个标签</li>
+<li><code>&lt;leader&gt;&lt;tab&gt;]</code> - 下一个标签</li>
+<li><code>&lt;leader&gt;&lt;tab&gt;[</code> - 上一个标签</li>
+<li><code>&lt;leader&gt;&lt;tab&gt;&lt;tab&gt;</code> - 新建标签</li>
+<li><code>&lt;leader&gt;&lt;tab&gt;d</code> - 关闭标签</li>
+<li><code>&lt;leader&gt;&lt;tab&gt;o</code> - 关闭其他标签</li>
+</ul>
+<h2 id="功能切换"><a href="#功能切换" class="headerlink" title="功能切换"></a>功能切换</h2><ul>
+<li><code>&lt;leader&gt;uf</code> - 切换格式化</li>
+<li><code>&lt;leader&gt;us</code> - 切换拼写检查</li>
+<li><code>&lt;leader&gt;uw</code> - 切换自动换行</li>
+<li><code>&lt;leader&gt;uL</code> - 切换相对行号</li>
+<li><code>&lt;leader&gt;ud</code> - 切换诊断</li>
+<li><code>&lt;leader&gt;ul</code> - 切换行号</li>
+<li><code>&lt;leader&gt;uc</code> - 切换代码隐藏级别</li>
+<li><code>&lt;leader&gt;uT</code> - 切换语法树</li>
+<li><code>&lt;leader&gt;ub</code> - 切换背景(亮/暗)</li>
+<li><code>&lt;leader&gt;uh</code> - 切换内联提示</li>
+</ul>
+<h2 id="其他-1"><a href="#其他-1" class="headerlink" title="其他"></a>其他</h2><ul>
+<li><code>&lt;leader&gt;l</code> - 打开Lazy插件管理器</li>
+<li><code>&lt;leader&gt;K</code> - 关键字程序</li>
+<li><code>&lt;leader&gt;cf</code> - 格式化</li>
+<li><code>&lt;leader&gt;qq</code> - 退出所有</li>
+<li><code>&lt;leader&gt;ui</code> - 检查位置摘要</li>
+</ul>
+<!--more-->
+
+<p>正文</p>
+<ul>
+<li><code>&lt;leader&gt;uI</code> - 检查语法树</li>
+<li><code>&lt;leader&gt;L</code> - LazyVim更新日志</li>
+</ul>
+<p>这些是从配置文件中提取的所有按键映射。我已经将它们按功能分类整理，每个分类下都列出了相关的按键绑定及其功能描述。其中：</p>
+<ul>
+<li><code>&lt;leader&gt;</code> 代表前导键</li>
+<li><code>&lt;C-x&gt;</code> 代表 Ctrl+x</li>
+<li><code>&lt;A-x&gt;</code> 代表 Alt+x</li>
+<li><code>&lt;S-x&gt;</code> 代表 Shift+x</li>
+</ul>
+<p>这些映射涵盖了从基本的移动操作到高级的Git操作等多个方面。是否需要我详细解释某个特定类别的按键绑定？</p>
+<p>好的，以下是按照你提供的格式整理的功能分类：</p>
+<h3 id="功能切换-1"><a href="#功能切换-1" class="headerlink" title="功能切换"></a>功能切换</h3><ul>
+<li><code>&lt;leader&gt;uf</code> - 切换格式化</li>
+<li><code>&lt;leader&gt;us</code> - 切换拼写检查</li>
+<li><code>&lt;leader&gt;uw</code> - 切换自动换行</li>
+<li><code>&lt;leader&gt;uL</code> - 切换相对行号</li>
+<li><code>&lt;leader&gt;ud</code> - 切换诊断</li>
+<li><code>&lt;leader&gt;ul</code> - 切换行号</li>
+<li><code>&lt;leader&gt;uc</code> - 切换代码隐藏级别</li>
+<li><code>&lt;leader&gt;uT</code> - 切换语法树</li>
+<li><code>&lt;leader&gt;ub</code> - 切换背景(亮/暗)</li>
+<li><code>&lt;leader&gt;uh</code> - 切换内联提示</li>
+</ul>
+<h3 id="编辑操作"><a href="#编辑操作" class="headerlink" title="编辑操作"></a>编辑操作</h3><ul>
+<li><code>&lt;A-j&gt;</code> - 向下移动行</li>
+<li><code>&lt;A-k&gt;</code> - 向上移动行</li>
+<li><code>&lt;leader&gt;cf</code> - 格式化当前文件</li>
+<li><code>&lt;C-s&gt;</code> - 保存当前文件</li>
+</ul>
+<h3 id="导航操作"><a href="#导航操作" class="headerlink" title="导航操作"></a>导航操作</h3><ul>
+<li><code>&lt;C-h&gt;</code> - 切换到左侧窗口</li>
+<li><code>&lt;C-j&gt;</code> - 切换到下方窗口</li>
+<li><code>&lt;C-k&gt;</code> - 切换到上方窗口</li>
+<li><code>&lt;C-l&gt;</code> - 切换到右侧窗口</li>
+<li><code>&lt;C-Up&gt;</code> - 增加窗口高度</li>
+<li><code>&lt;C-Down&gt;</code> - 减少窗口高度</li>
+<li><code>&lt;C-Left&gt;</code> - 减少窗口宽度</li>
+<li><code>&lt;C-Right&gt;</code> - 增加窗口宽度</li>
+</ul>
+<h3 id="缓冲区操作-1"><a href="#缓冲区操作-1" class="headerlink" title="缓冲区操作"></a>缓冲区操作</h3><ul>
+<li><code>&lt;S-h&gt;</code> - 切换到上一个缓冲区</li>
+<li><code>&lt;S-l&gt;</code> - 切换到下一个缓冲区</li>
+<li><code>[b</code> - 切换到上一个缓冲区</li>
+<li><code>]b</code> - 切换到下一个缓冲区</li>
+<li><code>&lt;leader&gt;bb</code> - 切换到另一个缓冲区</li>
+<li><code>&lt;leader&gt;</code> - 切换到另一个缓冲区</li>
+<li><code>&lt;leader&gt;bd</code> - 删除当前缓冲区</li>
+<li><code>&lt;leader&gt;bD</code> - 删除当前缓冲区并关闭窗口</li>
+</ul>
+<h3 id="搜索和高亮-1"><a href="#搜索和高亮-1" class="headerlink" title="搜索和高亮"></a>搜索和高亮</h3><ul>
+<li><code>&lt;esc&gt;</code> - 退出插入模式并清除高亮搜索</li>
+<li><code>&lt;leader&gt;ur</code> - 重绘窗口/清除高亮搜索/更新差异</li>
+<li><code>n</code> - 导航到下一个搜索结果</li>
+<li><code>N</code> - 导航到上一个搜索结果</li>
+<li><code>]d</code> - 导航到下一个诊断信息</li>
+<li><code>[d</code> - 导航到上一个诊断信息</li>
+<li><code>]e</code> - 导航到下一个错误</li>
+<li><code>[e</code> - 导航到上一个错误</li>
+<li><code>]w</code> - 导航到下一个警告</li>
+<li><code>[w</code> - 导航到上一个警告</li>
+<li><code>&lt;leader&gt;cd</code> - 打开当前位置的诊断信息</li>
+</ul>
+<h3 id="Git-集成"><a href="#Git-集成" class="headerlink" title="Git 集成"></a>Git 集成</h3><ul>
+<li><code>&lt;leader&gt;gg</code> - 打开LazyGit（根目录）</li>
+<li><code>&lt;leader&gt;gG</code> - 打开LazyGit（当前目录）</li>
+<li><code>&lt;leader&gt;gb</code> - Git Blame当前行</li>
+<li><code>&lt;leader&gt;gB</code> - 浏览Git仓库</li>
+<li><code>&lt;leader&gt;gf</code> - LazyGit当前文件历史</li>
+<li><code>&lt;leader&gt;gl</code> - LazyGit日志（根目录）</li>
+<li><code>&lt;leader&gt;gL</code> - LazyGit日志（当前目录）</li>
+</ul>
+<h3 id="终端操作"><a href="#终端操作" class="headerlink" title="终端操作"></a>终端操作</h3><ul>
+<li><code>&lt;leader&gt;ft</code> - 打开终端（根目录）</li>
+<li><code>&lt;leader&gt;fT</code> - 打开终端（当前目录）</li>
+<li><code>&lt;C-/&gt;</code> - 打开终端（根目录）</li>
+<li><code>&lt;C-_&gt;</code> - 关闭终端</li>
+<li><code>&lt;esc&gt;&lt;esc&gt;</code> - 在终端模式下进入普通模式</li>
+<li><code>&lt;C-h&gt;</code> - 在终端模式下切换到左侧窗口</li>
+<li><code>&lt;C-j&gt;</code> - 在终端模式下切换到下方窗口</li>
+<li><code>&lt;C-k&gt;</code> - 在终端模式下切换到上方窗口</li>
+<li><code>&lt;C-l&gt;</code> - 在终端模式下切换到右侧窗口</li>
+<li><code>&lt;C-/&gt;</code> - 关闭终端</li>
+</ul>
+<h3 id="窗口操作-1"><a href="#窗口操作-1" class="headerlink" title="窗口操作"></a>窗口操作</h3><ul>
+<li><code>&lt;leader&gt;w</code> - 窗口操作（基础映射）</li>
+<li><code>&lt;leader&gt;-</code> - 在下方分割窗口</li>
+<li><code>&lt;leader&gt;|</code> - 在右侧分割窗口</li>
+<li><code>&lt;leader&gt;wd</code> - 关闭当前窗口</li>
+<li><code>&lt;leader&gt;wm</code> - 最大化当前窗口</li>
+</ul>
+<h3 id="标签页操作"><a href="#标签页操作" class="headerlink" title="标签页操作"></a>标签页操作</h3><ul>
+<li><code>&lt;leader&gt;&lt;tab&gt;l</code> - 切换到最后一个标签页</li>
+<li><code>&lt;leader&gt;&lt;tab&gt;o</code> - 关闭其他标签页</li>
+<li><code>&lt;leader&gt;&lt;tab&gt;f</code> - 切换到第一个标签页</li>
+<li><code>&lt;leader&gt;&lt;tab&gt;&lt;tab&gt;</code> - 新建标签页</li>
+<li><code>&lt;leader&gt;&lt;tab&gt;]</code> - 切换到下一个标签页</li>
+<li><code>&lt;leader&gt;&lt;tab&gt;d</code> - 关闭当前标签页</li>
+<li><code>&lt;leader&gt;&lt;tab&gt;[</code> - 切换到上一个标签页</li>
+</ul>
+<h3 id="其他-2"><a href="#其他-2" class="headerlink" title="其他"></a>其他</h3><ul>
+<li><code>&lt;leader&gt;l</code> - 打开Lazy插件管理器</li>
+<li><code>&lt;leader&gt;K</code> - 关键字程序</li>
+<li><code>&lt;leader&gt;qq</code> - 退出所有窗口</li>
+<li><code>&lt;leader&gt;ui</code> - 检查光标位置</li>
+<li><code>&lt;leader&gt;uI</code> - 检查语法树</li>
+<li><code>&lt;leader&gt;L</code> - 查看LazyVim更新日志</li>
+</ul>
+<p>这样整理后，各项功能更加清晰，便于查看和理解。</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E7%AE%80%E6%98%8E/" rel="tag"># 简明</a>
+              <a href="/tags/Vim/" rel="tag"># Vim</a>
+              <a href="/tags/LazyVim/" rel="tag"># LazyVim</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2024/10/25/mardown-app-plan/" rel="prev" title="Markdown App Plan">
+      <i class="fa fa-chevron-left"></i> Markdown App Plan
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2024/10/25/the-art-of-developer-self-marketing/" rel="next" title="The Art of Developer Self-Marketing">
+      The Art of Developer Self-Marketing <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E5%AF%BC%E8%88%AA"><span class="nav-number">1.</span> <span class="nav-text">基本导航</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AA%97%E5%8F%A3%E8%B0%83%E6%95%B4"><span class="nav-number">2.</span> <span class="nav-text">窗口调整</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A1%8C%E7%A7%BB%E5%8A%A8"><span class="nav-number">3.</span> <span class="nav-text">行移动</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BC%93%E5%86%B2%E5%8C%BA%E6%93%8D%E4%BD%9C"><span class="nav-number">4.</span> <span class="nav-text">缓冲区操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%90%9C%E7%B4%A2%E5%92%8C%E9%AB%98%E4%BA%AE"><span class="nav-number">5.</span> <span class="nav-text">搜索和高亮</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%90%9C%E7%B4%A2%E7%BB%93%E6%9E%9C%E5%AF%BC%E8%88%AA"><span class="nav-number">6.</span> <span class="nav-text">搜索结果导航</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%92%A4%E9%94%80%E5%92%8C%E4%BF%9D%E5%AD%98"><span class="nav-number">7.</span> <span class="nav-text">撤销和保存</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B3%E9%94%AE%E8%AF%8D%E6%9F%A5%E6%89%BE"><span class="nav-number">8.</span> <span class="nav-text">关键词查找</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BC%A9%E8%BF%9B%E5%92%8C%E6%B3%A8%E9%87%8A"><span class="nav-number">9.</span> <span class="nav-text">缩进和注释</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LazyVim-%E5%8A%9F%E8%83%BD"><span class="nav-number">10.</span> <span class="nav-text">LazyVim 功能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C"><span class="nav-number">11.</span> <span class="nav-text">文件操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BF%AB%E9%80%9F%E4%BF%AE%E5%A4%8D%E5%92%8C%E9%94%99%E8%AF%AF%E5%AF%BC%E8%88%AA"><span class="nav-number">12.</span> <span class="nav-text">快速修复和错误导航</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%80%89%E9%A1%B9%E5%88%87%E6%8D%A2"><span class="nav-number">13.</span> <span class="nav-text">选项切换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Git-%E5%8A%9F%E8%83%BD"><span class="nav-number">14.</span> <span class="nav-text">Git 功能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%80%80%E5%87%BA%E5%92%8C%E7%BB%88%E7%AB%AF"><span class="nav-number">15.</span> <span class="nav-text">退出和终端</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B6%E4%BB%96"><span class="nav-number">16.</span> <span class="nav-text">其他</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%9B%E9%98%B6"><span class="nav-number"></span> <span class="nav-text">进阶</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E5%85%89%E6%A0%87%E7%A7%BB%E5%8A%A8%E5%92%8C%E7%AA%97%E5%8F%A3%E5%AF%BC%E8%88%AA"><span class="nav-number">1.</span> <span class="nav-text">1. 光标移动和窗口导航</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E7%AA%97%E5%8F%A3%E8%B0%83%E6%95%B4"><span class="nav-number">2.</span> <span class="nav-text">2. 窗口调整</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E8%A1%8C%E5%92%8C%E6%96%87%E6%9C%AC%E7%A7%BB%E5%8A%A8"><span class="nav-number">3.</span> <span class="nav-text">3. 行和文本移动</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-%E7%BC%93%E5%86%B2%E5%8C%BA%E7%AE%A1%E7%90%86"><span class="nav-number">4.</span> <span class="nav-text">4. 缓冲区管理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-%E6%90%9C%E7%B4%A2%E5%92%8C%E9%AB%98%E4%BA%AE"><span class="nav-number">5.</span> <span class="nav-text">5. 搜索和高亮</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C"><span class="nav-number">6.</span> <span class="nav-text">6. 文件操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-%E6%A0%BC%E5%BC%8F%E5%8C%96"><span class="nav-number">7.</span> <span class="nav-text">7. 格式化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-%E8%AF%8A%E6%96%AD%E4%BF%A1%E6%81%AF"><span class="nav-number">8.</span> <span class="nav-text">8. 诊断信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-%E8%AF%84%E8%AE%BA"><span class="nav-number">9.</span> <span class="nav-text">9. 评论</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10-%E5%BF%AB%E9%80%9F%E4%BF%AE%E5%A4%8D%E5%92%8C%E5%88%97%E8%A1%A8"><span class="nav-number">10.</span> <span class="nav-text">10. 快速修复和列表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#11-Git-%E6%93%8D%E4%BD%9C"><span class="nav-number">11.</span> <span class="nav-text">11. Git 操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#12-%E7%BB%88%E7%AB%AF%E6%93%8D%E4%BD%9C"><span class="nav-number">12.</span> <span class="nav-text">12. 终端操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#13-%E9%80%89%E9%A1%B9%E5%88%87%E6%8D%A2"><span class="nav-number">13.</span> <span class="nav-text">13. 选项切换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#14-%E9%80%80%E5%87%BA%E5%92%8C%E5%85%B6%E4%BB%96"><span class="nav-number">14.</span> <span class="nav-text">14. 退出和其他</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#LazyVim-%E6%8C%89%E9%94%AE%E6%98%A0%E5%B0%84%E6%80%BB%E8%A7%88"><span class="nav-number"></span> <span class="nav-text">LazyVim 按键映射总览</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E7%A1%80%E7%A7%BB%E5%8A%A8"><span class="nav-number"></span> <span class="nav-text">基础移动</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AA%97%E5%8F%A3%E6%93%8D%E4%BD%9C"><span class="nav-number"></span> <span class="nav-text">窗口操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91"><span class="nav-number"></span> <span class="nav-text">文本编辑</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Buffer%E6%93%8D%E4%BD%9C"><span class="nav-number"></span> <span class="nav-text">Buffer操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%90%9C%E7%B4%A2%E5%92%8C%E6%9B%BF%E6%8D%A2"><span class="nav-number"></span> <span class="nav-text">搜索和替换</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B3%A8%E9%87%8A"><span class="nav-number"></span> <span class="nav-text">注释</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C-1"><span class="nav-number"></span> <span class="nav-text">文件操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AF%8A%E6%96%AD%E5%92%8C%E9%94%99%E8%AF%AF"><span class="nav-number"></span> <span class="nav-text">诊断和错误</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Git%E6%93%8D%E4%BD%9C"><span class="nav-number"></span> <span class="nav-text">Git操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%88%E7%AB%AF"><span class="nav-number"></span> <span class="nav-text">终端</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A0%87%E7%AD%BE%E9%A1%B5"><span class="nav-number"></span> <span class="nav-text">标签页</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8A%9F%E8%83%BD%E5%88%87%E6%8D%A2"><span class="nav-number"></span> <span class="nav-text">功能切换</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B6%E4%BB%96-1"><span class="nav-number"></span> <span class="nav-text">其他</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8A%9F%E8%83%BD%E5%88%87%E6%8D%A2-1"><span class="nav-number">1.</span> <span class="nav-text">功能切换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BC%96%E8%BE%91%E6%93%8D%E4%BD%9C"><span class="nav-number">2.</span> <span class="nav-text">编辑操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%BC%E8%88%AA%E6%93%8D%E4%BD%9C"><span class="nav-number">3.</span> <span class="nav-text">导航操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BC%93%E5%86%B2%E5%8C%BA%E6%93%8D%E4%BD%9C-1"><span class="nav-number">4.</span> <span class="nav-text">缓冲区操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%90%9C%E7%B4%A2%E5%92%8C%E9%AB%98%E4%BA%AE-1"><span class="nav-number">5.</span> <span class="nav-text">搜索和高亮</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Git-%E9%9B%86%E6%88%90"><span class="nav-number">6.</span> <span class="nav-text">Git 集成</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%88%E7%AB%AF%E6%93%8D%E4%BD%9C"><span class="nav-number">7.</span> <span class="nav-text">终端操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AA%97%E5%8F%A3%E6%93%8D%E4%BD%9C-1"><span class="nav-number">8.</span> <span class="nav-text">窗口操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%87%E7%AD%BE%E9%A1%B5%E6%93%8D%E4%BD%9C"><span class="nav-number">9.</span> <span class="nav-text">标签页操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B6%E4%BB%96-2"><span class="nav-number">10.</span> <span class="nav-text">其他</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">DevCamb</p>
+  <div class="site-description" itemprop="description">在这个空间里，我们追求技术的自由与开源精神，正如理查德·斯托曼所言：“自由软件关乎自由，而非价格。” 同时，我们也将探索技术的本质，遵循林纳斯·托瓦兹的名言：“创造好点子最简单的方式是先有很多点子。”</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">18</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">35</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">DevCamb</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 7.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"duanbiao2000.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="作者描绘了一个高度整合和自动化的未来工作流程体系，通过个性化助手、AI代理、推理模型、优化计算资源、优质prompt设计、Agentic工程和实时API实现无缝协作。这些要素构成了他的AI愿景，即实现知识工作和生产力的彻底变革。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AI Engineering 2025 PLAN Max out AI COMPUTE for o1 Preview, Realtime API, and AI Assistants">
+<meta property="og:url" content="https://duanbiao2000.github.io/2024/11/11/ai-engineering-2025-plan/index.html">
+<meta property="og:site_name" content="自由之思，开源之行">
+<meta property="og:description" content="作者描绘了一个高度整合和自动化的未来工作流程体系，通过个性化助手、AI代理、推理模型、优化计算资源、优质prompt设计、Agentic工程和实时API实现无缝协作。这些要素构成了他的AI愿景，即实现知识工作和生产力的彻底变革。">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-11-11T00:03:00.000Z">
+<meta property="article:modified_time" content="2024-11-12T16:37:52.864Z">
+<meta property="article:author" content="DevCamb">
+<meta property="article:tag" content="AI">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://duanbiao2000.github.io/2024/11/11/ai-engineering-2025-plan/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>AI Engineering 2025 PLAN Max out AI COMPUTE for o1 Preview, Realtime API, and AI Assistants | 自由之思，开源之行</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+<link rel="alternate" href="/atom.xml" title="自由之思，开源之行" type="application/atom+xml">
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">自由之思，开源之行</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">秉承理查德·斯托曼与林纳斯·托瓦兹的理念</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://duanbiao2000.github.io/2024/11/11/ai-engineering-2025-plan/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="DevCamb">
+      <meta itemprop="description" content="在这个空间里，我们追求技术的自由与开源精神，正如理查德·斯托曼所言：“自由软件关乎自由，而非价格。” 同时，我们也将探索技术的本质，遵循林纳斯·托瓦兹的名言：“创造好点子最简单的方式是先有很多点子。”">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="自由之思，开源之行">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          AI Engineering 2025 PLAN Max out AI COMPUTE for o1 Preview, Realtime API, and AI Assistants
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2024-11-11 08:03:00" itemprop="dateCreated datePublished" datetime="2024-11-11T08:03:00+08:00">2024-11-11</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2024-11-13 00:37:52" itemprop="dateModified" datetime="2024-11-13T00:37:52+08:00">2024-11-13</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Agent/" itemprop="url" rel="index"><span itemprop="name">Agent</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>作者描绘了一个高度整合和自动化的未来工作流程体系，通过个性化助手、AI代理、推理模型、优化计算资源、优质prompt设计、Agentic工程和实时API实现无缝协作。这些要素构成了他的AI愿景，即实现知识工作和生产力的彻底变革。</p>
+<span id="more"></span>
+
+<p><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=4SnvMieJiuw&amp;t=94s">AI Engineering 2025 PLAN: Max out AI COMPUTE for o1 Preview, Realtime API, and AI Assistants</a></p>
+<h2 id="从数据注入（ingestion）到输出（synthesis）"><a href="#从数据注入（ingestion）到输出（synthesis）" class="headerlink" title="从数据注入（ingestion）到输出（synthesis）"></a>从数据注入（ingestion）到输出（synthesis）</h2><ol>
+<li><strong>数据注入 (Ingestion)</strong></li>
+</ol>
+<p>工程师的首要任务是接收并消化各种形式的信息，包括数据库、代码库、文档等。作者强调工程师的职责是 “ingest data and then we synthesize it into some form of output” (05:20)。在他眼中，数据注入的来源广泛且重要，如 “databases, code bases, documentation, blogs, Trends, news, research tools” (05:55)，即工程师从不同的信息源吸收数据，并为工作、工具、职业等目的加以利用。</p>
+<ol>
+<li><p><strong>利用AI工具辅助数据注入</strong><br>随着AI工具的进步，工程师可以通过AI更高效地完成数据的注入。作者提到，“now we have ai tooling… to ingest and synthesize information” (06:28)。在数据注入的过程，prompt成为了知识工作的基础单位，掌握prompt就能掌握数据注入的核心：“If you master the prompt, you will Master knowledge work” (06:28)。</p>
+</li>
+<li><p><strong>AI代理的介入 (AI Agent)</strong><br>进一步，AI代理成为了“prompts and logic combined with data to solve a specific problem” (07:03)，可以将prompt和数据结合，自动解决特定问题。比如，生成SQL查询或可视化数据，代理可以将这些工作加速并自动化处理。</p>
+</li>
+<li><p><strong>使用AI助手进行跨领域编排 (Orchestration Layer)</strong><br>作者描述了AI助手（如ADA）作为编排层，帮助工程师在不同领域高效工作。这一层使得AI可以在多个场景中协作完成不同任务：“orchestrate many AI agents across use cases” (08:08)。例如，通过简单的操作命令，ADA可以实现SQL数据的加载、文件生成和代码的编写等。</p>
+</li>
+<li><p><strong>最终数据的合成 (Synthesis of Output)</strong><br>在完成数据注入后，工程师的工作是将其“synthesize outputs” (05:20)。具体的输出形式包括“code, information, research, media content and products” (06:28)。作者强调，软件工程的精髓在于吸收信息并产出有价值的输出，其中“coding isn’t everything…you need to match up your ingestion tasks with the highest composition level of AI” (13:17)，工程师需要针对数据来源和目标来决定最优的AI工具组合。</p>
+</li>
+<li><p><strong>自动化和效率提升的闭环</strong><br>作者建议，工程师应不断反思哪些工作流程能利用AI实现更快、更有效的自动化，从而达到生产力的倍增。例如，通过prompt和AI代理解决单次需求，用更多的代理和编排层解决高频任务：“as soon as that use case comes back right… build an AI agent…an entire application” (15:28)。</p>
+</li>
+</ol>
+<h2 id="框架"><a href="#框架" class="headerlink" title="框架"></a>框架</h2><p>在这个流程中，作者提供了清晰的框架：从数据的广泛获取到利用AI逐步将流程自动化、提高效率，并最终以产品形式呈现输出。每一环节中他都提出了具体的工具与角色，并不断反复强调prompt和AI助手在未来工作模式中的核心位置。</p>
+<p>作者在视频中指出，2025年工程领域的一个重要主题是<strong>增强工程师的生产力和自主性</strong>。他提到：</p>
+<blockquote>
+<p>“In 2025, engineering will focus on enhancing productivity through automation and AI-driven decision-making, allowing engineers to spend more time on creative problem-solving rather than routine tasks.”</p>
+</blockquote>
+<p>这表明未来工程师不仅需要掌握AI工具，还要通过这些工具来减少日常工作中的重复性任务，以便把更多的时间和精力投入到创造性和复杂性更高的领域 .<br>在2025年，工程领域的关键主题还包括以下几个方面，作者在视频中也有具体说明：</p>
+<ol>
+<li><p><strong>作为“计算指挥者”来管理和协调计算资源</strong></p>
+<blockquote>
+<p>“You, as an engineer, will become the orchestrator and commander of compute, managing multiple AI agents and tools to solve complex problems in ways that were previously impossible.”</p>
+</blockquote>
+<p>工程师将不再只是开发者，更像是“计算指挥官”，协调不同的AI代理和工具，以新的方式解决问题，最大化计算资源的利用。</p>
+</li>
+<li><p><strong>基于生成式AI的“知识工作的基本单元”</strong></p>
+<blockquote>
+<p>“The prompt is the new fundamental unit of knowledge work… Mastering prompt design will be essential for next-level productivity.”</p>
+</blockquote>
+<p>生成式AI的发展使得prompt（提示词）成为知识工作的重要组成部分。精通提示词设计成为工程师实现超高效生产力的关键技能。</p>
+</li>
+<li><p><strong>跨领域的AI助手和智能代理</strong></p>
+<blockquote>
+<p>“The orchestration layer, or your personal AI assistant, is all about helping you do what you need to do across all the domains that you operate in.”</p>
+</blockquote>
+<p>未来的AI助手不仅限于某一特定的任务或领域，而是具备跨领域的能力，能帮助工程师处理多种任务，成为全面支持工程的多功能助手。</p>
+</li>
+<li><p><strong>工程角色的转变：从代码生成到软件的持续优化</strong></p>
+<blockquote>
+<p>“Coding isn’t everything. It’s about building and maintaining software that produces value for users—AI is here to help streamline the entire engineering process.”</p>
+</blockquote>
+<p>编码将不再是工程师的核心任务，工程师的角色会向管理和优化软件整体价值转变，AI工具将大大简化整个工程过程。</p>
+</li>
+<li><p><strong>工作流的自动化与提升生产力</strong></p>
+<blockquote>
+<p>“By 2025, your productivity gains will be measured in multipliers: using specialized agents might give you 5x productivity, while an orchestration layer with a personal assistant could take you to 10x or beyond.”</p>
+</blockquote>
+<p>AI工具将使生产力提升呈指数增长，从基本的AI代理到全面的AI助手层，每一层AI工具的应用都会大幅提升生产力。</p>
+</li>
+<li><p><strong>AI决策辅助和实时响应能力</strong></p>
+<blockquote>
+<p>“Real-time API and reasoning models like O1 allow you to make and execute decisions in real-time, bringing us closer to fully autonomous software systems.”</p>
+</blockquote>
+<p>实时API和新的推理模型（如O1）将使工程师能够在实时环境中决策和执行，逐步接近完全自动化的软件系统。</p>
+</li>
+<li><p><strong>从“单向AI”到“双向协作AI”的发展</strong></p>
+<blockquote>
+<p>“Agentic software is the end goal: AI that actively prompts you on what it needs to do next, creating a two-way collaboration.”</p>
+</blockquote>
+<p>最终的目标是实现双向协作的“智能代理”软件，AI不再只是响应指令，而是主动参与工作流，提出下一步的工作计划。</p>
+</li>
+</ol>
+<p>💡 Key Takeaways:</p>
+<ul>
+<li><strong>AI Assistant</strong>: Build your own personal AI assistant like Ada.</li>
+<li><strong>AI Agents</strong>: Learn how to design and deploy powerful AI agents.</li>
+<li><strong>Reasoning Model</strong>: Understand the role of reasoning models like O1.</li>
+<li><strong>AI Compute</strong>: Maximize your AI compute for optimal performance.</li>
+<li><strong>Prompt Engineering</strong>: Master the art of prompt design for effective AI interaction.</li>
+<li><strong>Agentic Engineering</strong>: Embrace the principles of agentic engineering for next-level productivity.</li>
+<li><strong>Realtime API</strong>: Leverage the power of realtime APIs for seamless AI integration.</li>
+<li>Join the journey. Stay focused, and Keep building.</li>
+</ul>
+<p>📖 Chapters:</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=4SnvMieJiuw&amp;t=0s">00:00</a>&nbsp;Four key breakthroughs for 2025</li>
+<li><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=4SnvMieJiuw&amp;t=44s">00:44</a>&nbsp;Personal AI Assistant Ada v3</li>
+<li><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=4SnvMieJiuw&amp;t=185s">03:05</a>&nbsp;My 2025 Plan For AI Engineering</li>
+<li><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=4SnvMieJiuw&amp;t=1047s">17:27</a>&nbsp;Three Big ideas for the rest of 2024</li>
+</ul>
+<p>作者的设计理念涉及从构建个性化AI助手到掌握高级的Agentic工程和实时API集成。</p>
+<ol>
+<li><p>**AI Assistant (构建个性化AI助手)**<br>作者提出打造个性化AI助手的理念，类似于他开发的ADA。这类助手能够支持工作流程的多面化整合，例如数据分析、代码生成、内容创作等。作者指出，“you can build your own assistant like Ada to orchestrate different agents and handle complex tasks” (08:08)。他认为，设计个性化AI助手是未来工作的核心，有助于提升跨任务的效率。</p>
+</li>
+<li><p><strong>AI Agents (设计和部署强大的AI代理)</strong><br>AI代理是一种专注于单个任务或特定任务的AI功能单元，能够结合数据和prompt完成特定工作。作者描述AI代理为“prompts and logic combined with data to solve a specific problem” (07:03)。他指出，代理可以实现更细化的任务分解，将工作流程分成可管理的小块并自动执行，从而节省人力：“build an AI agent for recurring tasks, automate data processing or content generation” (09:14)。</p>
+</li>
+<li><p><strong>Reasoning Model (理解推理模型的作用，例如O1)</strong><br>推理模型在AI应用中至关重要，因为它们决定了代理如何分析和处理复杂信息。作者提到，“reasoning models like O1 enhance the depth of analysis…they’re key for any high-level synthesis” (11:35)。通过推理模型，AI代理能够在信息合成中更具洞察力，有助于复杂问题的理解与解答。推理模型提高了AI的分析能力，使其能够自主应对不确定性和多任务场景。</p>
+</li>
+<li><p><strong>AI Compute (优化AI计算资源)</strong><br>在AI计算方面，作者强调高效资源分配的重要性，尤其是通过算力来推动AI性能提升。他提到，“maximize your AI compute to allow more detailed processing and faster response times” (12:22)。资源的优化意味着能在更短时间内处理更复杂的任务，确保AI能实时响应并处理高数据需求的任务。</p>
+</li>
+<li><p><strong>Prompt Engineering (掌握有效的Prompt设计)</strong><br>Prompt设计是AI互动中的关键。作者指出，“if you master the prompt, you will Master knowledge work” (06:28)。在他看来，prompt不仅仅是简单的指令，而是整个知识工作的重要一环。通过优化prompt，用户可以更精准地引导AI完成期望的任务，使AI更贴近人类意图。</p>
+</li>
+<li><p><strong>Agentic Engineering (掌握Agentic工程的核心原则)</strong><br>Agentic工程是一种从设计原则上优化AI代理协作的方式。作者称其为“the next level of productivity…combining AI agents and structured prompts to achieve continuous workflows” (13:56)。通过Agentic工程，多个代理可以协同工作，形成自动化和更高效的任务流。这个方法强调了通过代理管理复杂项目，实现持续优化和生产力提升。</p>
+</li>
+<li><p>**Realtime API (使用实时API实现无缝集成)**<br>实时API使得AI能够与外部系统实时交互，提升了系统的响应性。作者表示，“realtime APIs allow for seamless AI integration into your workflow…enhancing user interaction and data flow” (15:22)。通过实时API，AI可以即时处理输入，快速响应，从而实现流畅的多任务管理和动态信息同步。</p>
+</li>
+</ol>
+<h2 id="核心议题及关键构想"><a href="#核心议题及关键构想" class="headerlink" title="核心议题及关键构想"></a>核心议题及关键构想</h2><p>关于2025年AI工程的核心议题和未来计划，以下是重要内容的概要：</p>
+<ol>
+<li><strong>2025年的四大突破</strong>（<a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=4SnvMieJiuw&amp;t=0s">00:00</a>）</li>
+</ol>
+<ul>
+<li>2025年的关键技术突破将会对AI工程产生重要影响，特别是在生成式AI、实时API、结构化输出以及01推理模型等领域。</li>
+<li>这些突破为开发自我调控和协作的AI奠定了基础，为工程师提供更高效的工具，以支持数据采集和实时协作。</li>
+</ul>
+<ol start="2">
+<li><p><strong>个人AI助手 Ada v3</strong>（<a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=4SnvMieJiuw&amp;t=44s">00:44</a>）</p>
+<ul>
+<li>演示了个人AI助手Ada v3的功能，如快速查询数据库、生成Markdown文档、生成CSV文件，以及根据SQL数据制作可视化图表。</li>
+<li>Ada的实时API和结构化输出能力显著提升了数据处理的速度和效率，成为2025年工程师增强生产力的范例。</li>
+</ul>
+</li>
+<li><p><strong>AI工程的2025年规划</strong>（<a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=4SnvMieJiuw&amp;t=185s">03:05</a>）</p>
+</li>
+</ol>
+<ul>
+<li>作者提出了以更快、更高效地实现数据注入与输出的愿景。未来的AI工程中，生成式AI将通过更高层次的编排机制，帮助工程师实现从数据采集到方案输出的高效流程。</li>
+<li>强调了Prompt作为基础的知识工作单元，并预测AI助手将在跨领域的任务编排上发挥越来越重要的作用。</li>
+</ul>
+<h3 id="2024年剩余的三大关键构想（17-27）"><a href="#2024年剩余的三大关键构想（17-27）" class="headerlink" title="2024年剩余的三大关键构想（17:27）"></a><strong>2024年剩余的三大关键构想</strong>（<a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=4SnvMieJiuw&amp;t=1047s">17:27</a>）</h3><ul>
+<li><strong>Meta Prompting概念</strong>：探索Meta Prompting的潜力，进一步增强AI交互的精准度与灵活性。</li>
+<li><strong>AI编码课程</strong>：发布一门AI编码课程，旨在帮助开发者掌握生成式AI工具的实际操作技能。</li>
+<li><strong>新一代AI工具的发展</strong>：致力于实现从AI编码到强大Prompt设计、AI代理部署和个人AI助手的全面进步，最终朝向具备高度自主性的系统发展。</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/AI/" rel="tag"># AI</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2024/11/10/rust-bian-cheng-zhang-wo-suo-you-he-xin-te-xing/" rel="prev" title="📝 Rust编程：掌握所有核心特性！">
+      <i class="fa fa-chevron-left"></i> 📝 Rust编程：掌握所有核心特性！
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2024/11/11/wei-fu-wu-da-shi-ke-shen-ru-shi-jian-qu-dong-jia-gou-quan-gong-lue/" rel="next" title="📚 微服务大师课-深入事件驱动架构全攻略">
+      📚 微服务大师课-深入事件驱动架构全攻略 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%8E%E6%95%B0%E6%8D%AE%E6%B3%A8%E5%85%A5%EF%BC%88ingestion%EF%BC%89%E5%88%B0%E8%BE%93%E5%87%BA%EF%BC%88synthesis%EF%BC%89"><span class="nav-number">1.</span> <span class="nav-text">从数据注入（ingestion）到输出（synthesis）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A1%86%E6%9E%B6"><span class="nav-number">2.</span> <span class="nav-text">框架</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A0%B8%E5%BF%83%E8%AE%AE%E9%A2%98%E5%8F%8A%E5%85%B3%E9%94%AE%E6%9E%84%E6%83%B3"><span class="nav-number">3.</span> <span class="nav-text">核心议题及关键构想</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2024%E5%B9%B4%E5%89%A9%E4%BD%99%E7%9A%84%E4%B8%89%E5%A4%A7%E5%85%B3%E9%94%AE%E6%9E%84%E6%83%B3%EF%BC%8817-27%EF%BC%89"><span class="nav-number">3.1.</span> <span class="nav-text">2024年剩余的三大关键构想（17:27）</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">DevCamb</p>
+  <div class="site-description" itemprop="description">在这个空间里，我们追求技术的自由与开源精神，正如理查德·斯托曼所言：“自由软件关乎自由，而非价格。” 同时，我们也将探索技术的本质，遵循林纳斯·托瓦兹的名言：“创造好点子最简单的方式是先有很多点子。”</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">18</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">35</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">DevCamb</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

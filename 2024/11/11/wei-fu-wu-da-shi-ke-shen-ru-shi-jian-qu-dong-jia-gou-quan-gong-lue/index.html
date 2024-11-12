@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 7.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"duanbiao2000.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="通过事件（比如订单创建、付款完成）来触发业务流程，各服务基于事件消息进行通信。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="📚 微服务大师课-深入事件驱动架构全攻略">
+<meta property="og:url" content="https://duanbiao2000.github.io/2024/11/11/wei-fu-wu-da-shi-ke-shen-ru-shi-jian-qu-dong-jia-gou-quan-gong-lue/index.html">
+<meta property="og:site_name" content="自由之思，开源之行">
+<meta property="og:description" content="通过事件（比如订单创建、付款完成）来触发业务流程，各服务基于事件消息进行通信。">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/duanbiao2000/BlogGallery@main/picture/202411111623265.png">
+<meta property="article:published_time" content="2024-11-11T02:26:00.000Z">
+<meta property="article:modified_time" content="2024-11-12T16:37:52.868Z">
+<meta property="article:author" content="DevCamb">
+<meta property="article:tag" content="Microservice">
+<meta property="article:tag" content="EDA">
+<meta property="article:tag" content="Tutorial">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/duanbiao2000/BlogGallery@main/picture/202411111623265.png">
+
+<link rel="canonical" href="https://duanbiao2000.github.io/2024/11/11/wei-fu-wu-da-shi-ke-shen-ru-shi-jian-qu-dong-jia-gou-quan-gong-lue/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>📚 微服务大师课-深入事件驱动架构全攻略 | 自由之思，开源之行</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+<link rel="alternate" href="/atom.xml" title="自由之思，开源之行" type="application/atom+xml">
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">自由之思，开源之行</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">秉承理查德·斯托曼与林纳斯·托瓦兹的理念</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://duanbiao2000.github.io/2024/11/11/wei-fu-wu-da-shi-ke-shen-ru-shi-jian-qu-dong-jia-gou-quan-gong-lue/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="DevCamb">
+      <meta itemprop="description" content="在这个空间里，我们追求技术的自由与开源精神，正如理查德·斯托曼所言：“自由软件关乎自由，而非价格。” 同时，我们也将探索技术的本质，遵循林纳斯·托瓦兹的名言：“创造好点子最简单的方式是先有很多点子。”">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="自由之思，开源之行">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          📚 微服务大师课-深入事件驱动架构全攻略
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2024-11-11 10:26:00" itemprop="dateCreated datePublished" datetime="2024-11-11T10:26:00+08:00">2024-11-11</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2024-11-13 00:37:52" itemprop="dateModified" datetime="2024-11-13T00:37:52+08:00">2024-11-13</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Design/" itemprop="url" rel="index"><span itemprop="name">Design</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>通过事件（比如订单创建、付款完成）来触发业务流程，各服务基于事件消息进行通信。</p>
+<span id="more"></span>
+
+<p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1nEmkYmEVc/">📚 微服务大师课:深入事件驱动架构全攻略_哔哩哔哩_bilibili</a></p>
+<h2 id="术语"><a href="#术语" class="headerlink" title="术语"></a>术语</h2><blockquote>
+<p>[!abstract]<br>以下是视频中提到的关键名词和术语解释：</p>
+<ol>
+<li><p><strong>Microservices（微服务）</strong><br>一种架构风格，将应用程序分解为多个独立、可部署的小服务，每个服务负责特定的业务功能。这些服务可以独立开发、部署和扩展。</p>
+</li>
+<li><p><strong>Event-Driven Architecture（事件驱动架构）</strong><br>系统架构中，通过事件（比如订单创建、付款完成）来触发业务流程，各服务基于事件消息进行通信。这种架构能提高系统的响应速度和独立性。</p>
+</li>
+<li><p><strong>GoLang（Go 语言）</strong><br>一种现代编程语言，设计用于构建高效和可扩展的应用程序，特别适用于微服务架构。</p>
+</li>
+<li><p><strong>GraphQL</strong><br>一种数据查询语言，允许客户端请求特定的数据结构，提高了数据传输效率，并减少了不必要的数据加载。</p>
+</li>
+<li><p><strong>GRPC</strong><br>一种高性能的远程过程调用（RPC）框架，支持多种编程语言，常用于服务之间高效的数据通信。</p>
+</li>
+<li><p><strong>Docker</strong><br>一种容器化平台，允许开发人员在隔离环境中创建、部署和运行应用程序，从而实现一致性和可移植性。</p>
+</li>
+<li><p><strong>Polyglot Persistence（多语言持久化）</strong><br>在微服务架构中，允许不同的服务使用不同的数据库，以便选择最佳的数据存储解决方案来满足特定的业务需求。</p>
+</li>
+<li><p><strong>CQRS (Command Query Responsibility Segregation)（命令查询职责分离）</strong><br>一种架构模式，将数据修改操作（命令）与查询操作分离，适用于需要高扩展性的应用程序。</p>
+</li>
+<li><p><strong>Saga Pattern（Saga 模式）</strong><br>一种用于管理分布式事务的模式，将事务分解为一系列小事务，并提供回滚机制来保证一致性。</p>
+</li>
+<li><p><strong>Circuit Breaker（断路器）</strong><br>保护服务系统的一种模式，在服务不可用或出错时，自动切断请求，避免其他服务受到影响，并在条件允许时重新恢复连接。</p>
+</li>
+<li><p><strong>Bulkhead Pattern（舱壁模式）</strong><br>一种设计模式，通过将资源隔离，防止故障蔓延到整个系统，从而提高系统的鲁棒性。</p>
+</li>
+<li><p><strong>Sidecar Pattern（副车模式）</strong><br>在微服务旁增加一个”副车”进程或容器，以处理日志、监控、安全等辅助任务，从而简化主服务的开发和部署。</p>
+</li>
+<li><p><strong>API Gateway（API 网关）</strong><br>用于接收客户端请求并分发到后端服务的代理层。API 网关可管理身份验证、路由、限流等功能，提高系统安全性和效率。</p>
+</li>
+<li><p><strong>Pub/Sub (Publish/Subscribe)（发布/订阅）</strong><br>一种消息传递模式，发布者将消息发送到特定的主题（Topic），而订阅者只接收自己订阅主题的消息，实现松耦合通信。</p>
+</li>
+<li><p><strong>Message Queue（消息队列）</strong><br>存储和传递消息的系统，确保消息按顺序到达并提供容错能力，是实现事件驱动架构的关键。</p>
+</li>
+<li><p><strong>Event Streaming（事件流）</strong><br>一种处理实时数据流的架构模式，将不同事件流合并成统一的流，用于实时分析、处理和响应。</p>
+</li>
+<li><p><strong>Data Redundancy（数据冗余）</strong><br>将数据副本存储在多个位置，确保即使一个服务数据出错或丢失，其他服务依然可以访问该数据。</p>
+</li>
+<li><p><strong>Asynchronous Processing（异步处理）</strong><br>不等待任务完成即可返回响应的处理方式，适用于高并发场景，提高系统效率和响应速度。</p>
+</li>
+<li><p><strong>Scalability（可扩展性）</strong><br>系统根据负载动态调整资源，以保证性能的能力。微服务通过水平扩展（增加节点）实现高扩展性。</p>
+</li>
+<li><p><strong>Compliance（合规性）</strong><br>遵守数据保护、安全标准（如 GDPR），是处理敏感数据的微服务（如支付、身份验证）的重要要求。</p>
+</li>
+</ol>
+<p>以上术语概述了微服务架构和事件驱动设计中的关键概念。</p>
+</blockquote>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><blockquote>
+<p>[!NOTE]</p>
+<h3 id="key-points-with-timestamps"><a href="#key-points-with-timestamps" class="headerlink" title="key points with timestamps"></a>key points with timestamps</h3><p>Here’s a condensed summary of key points and timestamps from the “Master Microservices &amp; Event-Driven Architecture” guide:</p>
+<ol>
+<li><p><strong>Introduction &amp; Objective (00:00)</strong>: A comprehensive guide on microservices, covering GoLang, GraphQL, GRPC, Docker, and more, aiming to be an easy-to-understand, detailed resource.</p>
+</li>
+<li><p><strong>Team and Industry Perspectives (19:16)</strong>: Emphasizes that microservices require both technical understanding and knowledge of industry structures—how teams prioritize availability, feature velocity, and hiring adaptable engineers.</p>
+</li>
+<li><p><strong>Challenges with Microservices Architecture (28:56)</strong>: Covers challenges such as code repetition across services, abstraction management, and the misconception that microservices require high budgets.</p>
+</li>
+<li><p><strong>Scalability and Independent Service Scaling (1:05:47)</strong>: Microservices allow targeted scaling (e.g., only scaling lead servers in sales), making them beneficial for low-budget projects.</p>
+</li>
+<li><p><strong>Event-Driven Architecture (2:21:53)</strong>: Defines events in architecture, showing how order, inventory, and notification services use events to respond to changes independently, improving system responsiveness.</p>
+</li>
+<li><p><strong>Patterns in Microservices (2:31:03)</strong>: Describes key patterns, including Saga, CQRS, Circuit Breaker, Polyglot Persistence, and more, to address scaling, reliability, and communication challenges.</p>
+</li>
+<li><p><strong>Data Storage Redundancy and Compliance (2:12:15)</strong>: Discusses redundant storage for critical data and emphasizes compliance, particularly for services managing sensitive information like payments or user data.</p>
+</li>
+<li><p><strong>Stream &amp; Queue Management (3:30:09)</strong>: Highlights the role of streams in event-driven systems, the difference between streams and queues, and techniques for grouping, processing, and ordering events.</p>
+</li>
+<li><p><strong>Considerations for Microservices Use (5:55:58)</strong>: Advises avoiding microservices if rapid scaling isn’t anticipated or if the project scope doesn’t justify the complexity of distributed architecture.</p>
+</li>
+<li><p><strong>Future Plans (6:05:12)</strong>: Plans for future guides on ETL, distributed systems, and in-depth system design, indicating a focus on advanced microservices architecture.</p>
+</li>
+</ol>
+<p>This breakdown encapsulates the main points of a complex system design with a focus on the microservices and event-driven architecture lifecycle, practical challenges, and best practices.</p>
+</blockquote>
+<h2 id="细节"><a href="#细节" class="headerlink" title="细节"></a>细节</h2><blockquote>
+<p>[!NOTE]  Key Concepts</p>
+<ol>
+<li><strong>Event-Driven Architecture (EDA)</strong>: A software architecture paradigm where the system is driven by events.</li>
+<li><strong>Microservices</strong>: Small, independent services that work together to form a larger application.</li>
+<li><strong>Synchronous vs. Asynchronous Communication</strong>: Synchronous communication is request-response based, while asynchronous communication is event-based.</li>
+<li><strong>Single Truth Source</strong>: Events should contain all the necessary information to be the single source of truth for a particular piece of data.</li>
+<li><strong>Event Consumers</strong>: Services that listen and respond to events.</li>
+<li><strong>Data Integrity</strong>: Ensuring that events contain only relevant data to maintain system efficiency and reduce complexity.</li>
+<li><strong>System Scalability and Resilience</strong>: Benefits of EDA and microservices in scaling and handling system failures.</li>
+</ol>
+</blockquote>
+<blockquote>
+<p>[!note] Examples from the Lecture</p>
+<ol>
+<li><strong>Order Processing</strong>: An order event includes order status and inventory adjustment, which can lead to confusion as multiple services might need to consume this event for different purposes.<ul>
+<li><strong>Correct Approach</strong>: Separate events for order processing and inventory adjustment.</li>
+</ul>
+</li>
+<li><strong>Purchase Completion Event</strong>: Instead of including detailed product descriptions and user device data, only send essential information like order ID, user ID, and product ID list with quantities.</li>
+<li><strong>Inventory Update Event</strong>: Should carry information about item updates rather than just a signal that an update has been made.</li>
+</ol>
+<h4 id="Notes-with-Numbers-and-Data"><a href="#Notes-with-Numbers-and-Data" class="headerlink" title="Notes with Numbers and Data"></a>Notes with Numbers and Data</h4><ol>
+<li><strong>Netflix Microservices</strong>: Netflix has around 1,000 microservices.</li>
+<li><strong>Uber Microservices</strong>: Uber has approximately 4,500 microservices.</li>
+<li><strong>Data Locality</strong>: Key-value events ensure data locality by partitioning event streams, which is crucial for data integrity and system performance.</li>
+</ol>
+</blockquote>
+<blockquote>
+<p>[!NOTE] Examples Included in the Lecture</p>
+<ol>
+<li><strong>Order Service and Inventory Service</strong>: The order service emits an event that includes order status and inventory adjustment, which is consumed by both the inventory service and the notification service.</li>
+<li><strong>Retail System</strong>: Product added to the shopping cart event can be consumed by inventory service, pricing service, and recommendation service, each reacting differently to the same event.</li>
+<li><strong>Payment Processing Event</strong>: Contains transaction ID, order ID, amount, and status, acting as the single truth source for payment status.</li>
+</ol>
+<h3 id="Additional-Notes"><a href="#Additional-Notes" class="headerlink" title="Additional Notes"></a>Additional Notes</h3><ul>
+<li><strong>Strangler Fig Pattern</strong>: A pattern used to gradually refactor a monolith into microservices by slowly introducing new services that will eventually replace the monolithic functionality.</li>
+<li><strong>API Gateway</strong>: Acts as a single entry point for all clients, handling the complexity of routing requests to appropriate microservices.</li>
+<li><strong>Backend for Frontend (BFF) Pattern</strong>: Provides a separate API layer for different clients (e.g., mobile, web) to cater to their specific needs and reduce the complexity of client-side development.</li>
+<li><strong>Distributed API Gateway</strong>: An advanced solution where there are multiple API gateways to handle different client types, increasing resilience and scalability.</li>
+</ul>
+</blockquote>
+<h2 id="作者观点-API-Gateways"><a href="#作者观点-API-Gateways" class="headerlink" title="作者观点 - API Gateways"></a>作者观点 - API Gateways</h2><blockquote>
+<p>[!NOTE] Author’s viewpoints about API Gateway</p>
+<ol>
+<li><p><strong>Central Interface</strong>: API Gateways act as a unified central interface between clients and various microservices, handling the complexity of making calls to different backend services.</p>
+<p><em>Author’s Words</em>: “API Gateways, let things become very simple, it’s just acting as a unified central interface between your frontend, all different frontends, and you can have even more clients, but they will all make requests to the API Gateway.”</p>
+</li>
+<li><p><strong>Security Enhancement</strong>: By acting as an intermediary, API Gateways enhance security as they can restrict rate, blacklist IPs, and prevent compromised clients from bringing the backend down.</p>
+<p><em>Author’s Words</em>: “Because now you must go through the API Gateway, you can restrict rate, you can blacklist IPs, infected clients won’t bring your backend down.”</p>
+</li>
+<li><p><strong>Handling Complexity</strong>: API Gateways handle the complexity of interacting with multiple microservices, allowing the frontend to remain simple and not have direct access to the microservices.</p>
+<p><em>Author’s Words</em>: “API Gateways handle all the complexity because they are backend, running server applications, so they will handle making all the complexity, calling different backend, different microservices, and getting all the data and then collating it and then passing it onto all your frontends.”</p>
+</li>
+<li><p><strong>Scalability and Client Increase</strong>: As the number of microservices and clients increases, having a central gateway can help manage this growth without overwhelming the system.</p>
+<p><em>Author’s Words</em>: “If the number of microservices needs to increase and the number of clients also needs to increase, having a central interface between services and clients is wise.”</p>
+</li>
+<li><p><strong>Single Point of Failure Concern</strong>: While API Gateways provide centralization, they also introduce a single point of failure. If the API Gateway goes down, all clients are left hanging.</p>
+<p><em>Author’s Words</em>: “The only challenge with API Gateways is that if the API Gateway goes down, then you lose access to your entire backend, which means your software is down.”</p>
+</li>
+<li><p><strong>Data Handling for Different Clients</strong>: Different clients may require different amounts and structures of data. API Gateways can aggregate and format data appropriately for each client, such as mobile apps requiring less data than web frontends.</p>
+<p><em>Author’s Words</em>: “Web frontends can handle larger JSON objects and have more space to display more fields, but in mobile applications, you don’t have enough space, so you want to keep the data very minimal.”</p>
+</li>
+</ol>
+</blockquote>
+<h2 id="技术多样性"><a href="#技术多样性" class="headerlink" title="技术多样性"></a>技术多样性</h2><p>在微服务架构中，服务的多样性实现允许团队根据服务的具体需求、业务逻辑的复杂性、以及团队成员的技能和经验来选择最合适的编程语言。以下是一些具体的应用场景和推理，基于您提供的附件内容：</p>
+<blockquote>
+<p>[!NOTE]</p>
+<ol>
+<li><p><strong>Go语言服务</strong>：</p>
+<ul>
+<li><strong>适用场景</strong>：Go语言以其并发处理能力和高性能而闻名，适合实现需要处理大量并发请求的服务，如API网关、微服务的内部通信、或者需要快速响应的服务。</li>
+<li><strong>作者细节</strong>：作者提到了Go语言项目播放列表，表明对Go语言有深入的了解和实践经验。</li>
+<li><strong>推理</strong>：由于作者有Go语言的项目经验，他可能会推荐在需要高性能和并发处理的场景中使用Go语言。</li>
+</ul>
+</li>
+<li><p><strong>Python服务</strong>：</p>
+<ul>
+<li><strong>适用场景</strong>：Python因其简洁的语法和强大的库支持（如数据分析和机器学习库Pandas、NumPy、Scikit-learn等）而广受欢迎。适合实现数据处理密集型、机器学习模型、或者需要快速原型开发的服务。</li>
+<li><strong>作者细节</strong>：作者提到了Python在推荐系统中的应用，因为Python拥有丰富的库支持。</li>
+<li><strong>推理</strong>：在需要数据科学和机器学习支持的服务中，Python可能是首选语言，因为它提供了大量的库和框架来简化开发过程。</li>
+</ul>
+</li>
+<li><p><strong>Node.js服务</strong>：</p>
+<ul>
+<li><strong>适用场景</strong>：Node.js以其非阻塞I/O和事件驱动架构而适合实现I/O密集型服务，如Web服务器、实时通信服务等。</li>
+<li><strong>作者细节</strong>：作者提到了Node.js作为微服务的一个选项，尤其是在需要处理大量I/O操作的场景中。</li>
+<li><strong>推理</strong>：Node.js的异步特性使其在构建能够处理大量并发连接的服务时非常有用，例如在线聊天服务或实时数据流处理。</li>
+</ul>
+</li>
+<li><p><strong>多云和多语言持久性</strong>：</p>
+<ul>
+<li><strong>适用场景</strong>：作者提到了多云策略，这意味着服务可以根据需要部署在不同的云平台上，利用各自的优势服务。例如，使用AWS的API网关、GCP的机器学习服务、Azure的AI服务等。</li>
+<li><strong>推理</strong>：这种策略允许团队根据服务的具体需求选择最合适的云服务和数据库技术，而不是受限于单一云平台的限制。</li>
+</ul>
+</li>
+<li><p><strong>技术栈的灵活性</strong>：</p>
+<ul>
+<li><strong>适用场景</strong>：在微服务架构中，团队可以根据服务的需求和团队的专业知识灵活选择技术栈。</li>
+<li><strong>作者细节</strong>：作者强调了微服务架构中技术多样性的重要性，并提供了多个语言和框架的例子。</li>
+<li><strong>推理</strong>：这种多样性不仅允许团队利用各种语言的优势，还有助于团队成员发挥他们的专长，提高开发效率和服务质量。</li>
+</ul>
+</li>
+</ol>
+</blockquote>
+<p>总结来说，微服务架构中的服务多样性实现是基于业务需求、技术优势、以及团队能力的最优选择。这种灵活性和适应性是微服务架构能够满足现代软件开发中快速变化需求的关键因素。</p>
+<h2 id="消息队列"><a href="#消息队列" class="headerlink" title="消息队列"></a>消息队列</h2><p>微服务架构中的队列（Queue）具有多种优点，以下是一些主要的优势：</p>
+<blockquote>
+<p>[!NOTE]</p>
+<ol>
+<li><p><strong>异步处理</strong>：队列允许服务之间进行异步通信，发送方可以将消息发送到队列中，而不需要等待接收方的处理完成。这提高了系统的响应性和吞吐量。</p>
+</li>
+<li><p><strong>解耦合</strong>：使用队列可以将服务之间的依赖关系减到最小。发送方与接收方不直接依赖，可以独立地进行开发和部署，降低了系统的复杂性。</p>
+</li>
+<li><p><strong>流量控制</strong>：队列可以对请求进行排队，从而防止系统被瞬时的大量请求淹没。这种流量控制机制可以保护后端服务不被过载。</p>
+</li>
+<li><p><strong>负载均衡</strong>：多个消费者可以从同一个队列中消费消息，从而实现负载均衡。这可以有效利用资源，提高处理能力。</p>
+</li>
+<li><p><strong>故障恢复</strong>：如果某个服务暂时不可用，消息仍然可以被保留在队列中，待服务恢复后再处理。这种机制提高了系统的可靠性。</p>
+</li>
+<li><p><strong>消息持久化</strong>：许多消息队列系统提供消息持久化功能，可以将消息存储在磁盘上，防止数据丢失。这对于重要的业务场景尤其重要。</p>
+</li>
+<li><p><strong>可伸缩性</strong>：使用队列可以使得微服务的伸缩变得更加灵活，可以根据负载动态添加或移除消费者。</p>
+</li>
+<li><p><strong>监控和分析</strong>：队列可以提供丰富的监控和统计信息，帮助开发团队分析系统性能和瓶颈，进而优化服务。</p>
+</li>
+<li><p><strong>支持分布式系统</strong>：在分布式环境中，队列可以帮助不同地理位置的服务进行有效的通信，促进微服务的分布式部署。</p>
+</li>
+</ol>
+</blockquote>
+<h2 id="消息传递模式"><a href="#消息传递模式" class="headerlink" title="消息传递模式"></a>消息传递模式</h2><p>在消息传递系统中，”pull”、”push” 和 “pub/sub” 是三种常见的消息传递模式。每种模式都有其特点和适用场景：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/duanbiao2000/BlogGallery@main/picture/202411111623265.png" alt="image.png"></p>
+<blockquote>
+<p>[!NOTE]</p>
+<ol>
+<li><p><strong>Pull（拉取模式）</strong>：</p>
+<ul>
+<li>在拉取模式中，消费者主动请求消息（即“拉取”消息）。</li>
+<li>消费者定期从消息队列中检查是否有新消息，有新消息时就将其拉取下来处理。</li>
+<li>优点：消费者可以控制拉取的频率，有助于防止过载。</li>
+<li>缺点：可能导致延迟，特别是如果消费者不频繁拉取消息时。</li>
+<li>适用场景：当消费者需要控制处理速度，或对系统负载有严格要求时。</li>
+</ul>
+</li>
+<li><p><strong>Push（推送模式）</strong>：</p>
+<ul>
+<li>在推送模式中，消息生产者将消息直接发送（即“推送”）给消费者。</li>
+<li>消费者不需要主动请求消息，消息会自动推送到消费者。</li>
+<li>优点：可以及时将新消息传递给消费者，减少延迟。</li>
+<li>缺点：如果消费者处理速度慢，可能会导致消息堆积或系统过载。</li>
+<li>适用场景：需要实时传递消息的场景，比如实时推送通知。</li>
+</ul>
+</li>
+<li><p><strong>Pub/Sub（发布/订阅模式）</strong>：</p>
+<ul>
+<li>在发布/订阅模式中，消息生产者（发布者）将消息发送到主题（或通道），而多个消费者（订阅者）可以选择订阅感兴趣的主题。</li>
+<li>消息被发送到所有订阅了该主题的消费者。</li>
+<li>优点：可以实现一对多的消息传递，适合需要广播通知的场景。</li>
+<li>缺点：可能需要处理订阅者的状态和消息的顺序问题。</li>
+<li>适用场景：需要实现事件通知、实时数据更新等场景。</li>
+</ul>
+</li>
+</ol>
+</blockquote>
+<h2 id="延迟队列"><a href="#延迟队列" class="headerlink" title="延迟队列"></a>延迟队列</h2><p>Delay queue（延迟队列）是一种特殊类型的消息队列，它允许用户在一定的延迟时间后才处理消息。这种机制在许多场景中非常有用，尤其是在需要控制消息处理时间的应用中。</p>
+<blockquote>
+<p>[!NOTE]<br>title: 延迟队列的工作原理</p>
+<ol>
+<li><p><strong>发送消息</strong>：</p>
+<ul>
+<li>生产者将消息发送到延迟队列，并指定一个延迟时间（例如，几秒钟或几分钟）。</li>
+</ul>
+</li>
+<li><p><strong>存储消息</strong>：</p>
+<ul>
+<li>消息会被存储在队列中，直到达到指定的延迟时间。此时，消息仍然是不可见的，消费者无法读取。</li>
+</ul>
+</li>
+<li><p><strong>处理消息</strong>：</p>
+<ul>
+<li>一旦延迟时间到达，消息将变为可见，消费者可以从队列中拉取并处理这些消息。</li>
+</ul>
+</li>
+</ol>
+<h3 id="特点与优点"><a href="#特点与优点" class="headerlink" title="特点与优点"></a>特点与优点</h3><ul>
+<li><p><strong>控制处理时间</strong>：允许开发者控制何时处理特定的消息，这对于某些业务逻辑非常重要，例如在订单处理系统中预留时间以确认订单。</p>
+</li>
+<li><p><strong>减轻瞬时负载</strong>：延迟处理某些消息可以帮助减轻系统在高峰期的负载，允许系统在正常负载下进行处理。</p>
+</li>
+<li><p><strong>定时任务</strong>：可以用作一种简化的定时任务调度机制，允许开发者在未来的某个时间点执行特定操作。</p>
+</li>
+</ul>
+<h3 id="适用场景"><a href="#适用场景" class="headerlink" title="适用场景"></a>适用场景</h3><ul>
+<li><p><strong>重试机制</strong>：在处理失败的消息时，可以将其放入延迟队列，在一段时间后重试处理。</p>
+</li>
+<li><p><strong>订单处理</strong>：在电商系统中，延迟队列可以用于处理订单确认、取消等操作。</p>
+</li>
+<li><p><strong>限流</strong>：在需要对请求进行速率限制的系统中，延迟队列可以帮助平滑流量，提高系统稳定性。</p>
+</li>
+<li><p><strong>事件通知</strong>：在某些情况下，事件可能需要在延迟后才通知用户，例如促销活动开始前的提醒。</p>
+</li>
+</ul>
+<h3 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h3><p>许多消息队列系统和框架都支持延迟队列的功能，例如：</p>
+<ul>
+<li><strong>RabbitMQ</strong>：通过使用延迟交换（Delayed Exchange）来实现。</li>
+<li><strong>Kafka</strong>：可以通过设置消息的过期时间，实现类似功能。</li>
+<li><strong>Redis</strong>：可以通过使用有序集合（Sorted Set）来实现延迟队列。</li>
+<li><strong>AWS SQS</strong>：支持延迟队列的功能，可以直接设置延迟时间。</li>
+</ul>
+<p>延迟队列是构建灵活和高效消息处理系统的有力工具，能够满足多种业务需求。</p>
+</blockquote>
+<h2 id="技术栈"><a href="#技术栈" class="headerlink" title="技术栈"></a>技术栈</h2><p>在微服务架构中，许多工具和技术栈是为了帮助团队管理和协调大量分布式服务而引入的，但这些技术栈可能并非所有团队都熟悉或具备经验。下面是一些典型的技术栈和它们在微服务环境中的作用：</p>
+<blockquote>
+<p>[!NOTE]</p>
+<h3 id="1-容器（Containers）"><a href="#1-容器（Containers）" class="headerlink" title="1. 容器（Containers）"></a>1. <strong>容器（Containers）</strong></h3><ul>
+<li><strong>定义</strong>：容器是一种虚拟化技术，它能够将应用程序及其依赖项打包在一起，确保应用程序在不同环境中具有一致的运行表现。Docker是目前最流行的容器化技术之一。</li>
+<li><strong>在微服务中的作用</strong>：每个微服务可以在独立的容器中运行，这样可以确保服务间的隔离性和独立性，方便服务的部署、扩展和迁移。容器还能与容器编排工具（如Kubernetes）结合，实现自动化部署和管理。</li>
+<li><strong>挑战</strong>：容器化需要对开发环境、部署流程进行调整，开发团队也需要学习如何构建、管理容器和编排系统。对于缺乏经验的团队，这些学习曲线可能较陡。</li>
+</ul>
+<h3 id="2-服务网格（Service-Mesh）"><a href="#2-服务网格（Service-Mesh）" class="headerlink" title="2. 服务网格（Service Mesh）"></a>2. <strong>服务网格（Service Mesh）</strong></h3><ul>
+<li><strong>定义</strong>：服务网格是一种用于微服务间通信的基础设施层。它主要负责服务发现、负载均衡、安全管理、监控和通信控制等功能。Istio和Linkerd是常见的服务网格实现。</li>
+<li><strong>在微服务中的作用</strong>：服务网格可以帮助微服务自动化地处理通信问题，例如安全传输、限流、故障恢复等。同时，它还提供服务间的流量管理和监控，提高系统的可观察性和可靠性。</li>
+<li><strong>挑战</strong>：服务网格的配置和管理较为复杂，特别是像Istio这样的服务网格，涉及大量的概念和配置项，需要一定的操作和维护经验。没有服务网格经验的团队在实施和运维时可能会遇到较大的困难。</li>
+</ul>
+<h3 id="3-日志收集与集中监控（Logging-and-Centralized-Monitoring）"><a href="#3-日志收集与集中监控（Logging-and-Centralized-Monitoring）" class="headerlink" title="3. 日志收集与集中监控（Logging and Centralized Monitoring）"></a>3. <strong>日志收集与集中监控（Logging and Centralized Monitoring）</strong></h3><ul>
+<li><strong>定义</strong>：在分布式系统中，各个微服务会产生大量的日志数据。日志收集系统（如ELK Stack: Elasticsearch, Logstash, Kibana）可以集中收集和分析这些数据，为团队提供关键的运行信息。</li>
+<li><strong>在微服务中的作用</strong>：集中日志系统能够帮助团队追踪分布式请求流、发现故障点、并进行系统调试。在微服务环境下，这种集中化的日志收集和监控尤其重要，因为问题往往可能跨多个服务节点。</li>
+<li><strong>挑战</strong>：日志收集和监控平台需要配置和管理，日志的存储和处理会增加系统的资源消耗。而且，如何设计合适的日志结构和监控指标也需要团队有经验和策略。</li>
+</ul>
+<h3 id="4-分布式追踪（Distributed-Tracing）"><a href="#4-分布式追踪（Distributed-Tracing）" class="headerlink" title="4. 分布式追踪（Distributed Tracing）"></a>4. <strong>分布式追踪（Distributed Tracing）</strong></h3><ul>
+<li><strong>定义</strong>：分布式追踪是一种跟踪请求在各个微服务间传递的技术。它能够将一次请求的全流程记录下来，便于定位性能瓶颈或故障节点。常见工具包括Jaeger和Zipkin。</li>
+<li><strong>在微服务中的作用</strong>：在分布式环境下，单个请求可能会穿越多个微服务。分布式追踪工具能够清晰地展示请求的整个路径及其在各个服务中的耗时。</li>
+<li><strong>挑战</strong>：分布式追踪工具需要在每个服务中嵌入追踪逻辑，并对追踪数据进行集中管理。没有经验的团队在配置和使用时可能遇到较多困难。</li>
+</ul>
+<h3 id="5-配置管理和服务发现（Configuration-Management-and-Service-Discovery）"><a href="#5-配置管理和服务发现（Configuration-Management-and-Service-Discovery）" class="headerlink" title="5. 配置管理和服务发现（Configuration Management and Service Discovery）"></a>5. <strong>配置管理和服务发现（Configuration Management and Service Discovery）</strong></h3><ul>
+<li><strong>定义</strong>：微服务的配置管理和服务发现是确保各个微服务在分布式系统中能够互相识别并通信的关键组件。常见工具包括Consul、etcd、Spring Cloud Config等。</li>
+<li><strong>在微服务中的作用</strong>：服务发现用于识别和定位服务节点的位置，而配置管理用于集中管理各个服务的配置，确保环境一致性。</li>
+<li><strong>挑战</strong>：配置和服务发现需要对系统的整体架构和运作模式有深入理解。错误的配置管理可能会导致系统通信失败或产生不一致行为。</li>
+</ul>
+</blockquote>
+<h3 id="总结-1"><a href="#总结-1" class="headerlink" title="总结"></a>总结</h3><p>这些技术栈在微服务架构中至关重要，但对于缺乏微服务和分布式系统经验的团队来说，掌握这些工具需要时间和资源的投入。如果团队的经验不足，可能会在使用和维护这些技术栈时遇到复杂的问题，增加开发和运维负担。因此，在选择微服务架构时，评估团队的技术能力和学习成本是非常重要的。</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Microservice/" rel="tag"># Microservice</a>
+              <a href="/tags/EDA/" rel="tag"># EDA</a>
+              <a href="/tags/Tutorial/" rel="tag"># Tutorial</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2024/11/11/ai-engineering-2025-plan/" rel="prev" title="AI Engineering 2025 PLAN Max out AI COMPUTE for o1 Preview, Realtime API, and AI Assistants">
+      <i class="fa fa-chevron-left"></i> AI Engineering 2025 PLAN Max out AI COMPUTE for o1 Preview, Realtime API, and AI Assistants
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2024/11/12/duan-url-lian-jie-fu-wu-xi-tong-she-ji-mian-shi-gong-lue/" rel="next" title="短URL链接服务：系统设计面试攻略！">
+      短URL链接服务：系统设计面试攻略！ <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%AF%E8%AF%AD"><span class="nav-number">1.</span> <span class="nav-text">术语</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">2.</span> <span class="nav-text">总结</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#key-points-with-timestamps"><span class="nav-number">2.1.</span> <span class="nav-text">key points with timestamps</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%86%E8%8A%82"><span class="nav-number">3.</span> <span class="nav-text">细节</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Notes-with-Numbers-and-Data"><span class="nav-number">3.0.1.</span> <span class="nav-text">Notes with Numbers and Data</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Additional-Notes"><span class="nav-number">3.1.</span> <span class="nav-text">Additional Notes</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%9C%E8%80%85%E8%A7%82%E7%82%B9-API-Gateways"><span class="nav-number">4.</span> <span class="nav-text">作者观点 - API Gateways</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8A%80%E6%9C%AF%E5%A4%9A%E6%A0%B7%E6%80%A7"><span class="nav-number">5.</span> <span class="nav-text">技术多样性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97"><span class="nav-number">6.</span> <span class="nav-text">消息队列</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B6%88%E6%81%AF%E4%BC%A0%E9%80%92%E6%A8%A1%E5%BC%8F"><span class="nav-number">7.</span> <span class="nav-text">消息传递模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BB%B6%E8%BF%9F%E9%98%9F%E5%88%97"><span class="nav-number">8.</span> <span class="nav-text">延迟队列</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%89%B9%E7%82%B9%E4%B8%8E%E4%BC%98%E7%82%B9"><span class="nav-number">8.1.</span> <span class="nav-text">特点与优点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%80%82%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="nav-number">8.2.</span> <span class="nav-text">适用场景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9E%E7%8E%B0"><span class="nav-number">8.3.</span> <span class="nav-text">实现</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8A%80%E6%9C%AF%E6%A0%88"><span class="nav-number">9.</span> <span class="nav-text">技术栈</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E5%AE%B9%E5%99%A8%EF%BC%88Containers%EF%BC%89"><span class="nav-number">9.1.</span> <span class="nav-text">1. 容器（Containers）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E6%9C%8D%E5%8A%A1%E7%BD%91%E6%A0%BC%EF%BC%88Service-Mesh%EF%BC%89"><span class="nav-number">9.2.</span> <span class="nav-text">2. 服务网格（Service Mesh）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E6%97%A5%E5%BF%97%E6%94%B6%E9%9B%86%E4%B8%8E%E9%9B%86%E4%B8%AD%E7%9B%91%E6%8E%A7%EF%BC%88Logging-and-Centralized-Monitoring%EF%BC%89"><span class="nav-number">9.3.</span> <span class="nav-text">3. 日志收集与集中监控（Logging and Centralized Monitoring）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-%E5%88%86%E5%B8%83%E5%BC%8F%E8%BF%BD%E8%B8%AA%EF%BC%88Distributed-Tracing%EF%BC%89"><span class="nav-number">9.4.</span> <span class="nav-text">4. 分布式追踪（Distributed Tracing）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-%E9%85%8D%E7%BD%AE%E7%AE%A1%E7%90%86%E5%92%8C%E6%9C%8D%E5%8A%A1%E5%8F%91%E7%8E%B0%EF%BC%88Configuration-Management-and-Service-Discovery%EF%BC%89"><span class="nav-number">9.5.</span> <span class="nav-text">5. 配置管理和服务发现（Configuration Management and Service Discovery）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%80%BB%E7%BB%93-1"><span class="nav-number">9.6.</span> <span class="nav-text">总结</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">DevCamb</p>
+  <div class="site-description" itemprop="description">在这个空间里，我们追求技术的自由与开源精神，正如理查德·斯托曼所言：“自由软件关乎自由，而非价格。” 同时，我们也将探索技术的本质，遵循林纳斯·托瓦兹的名言：“创造好点子最简单的方式是先有很多点子。”</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">18</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">35</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">DevCamb</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
