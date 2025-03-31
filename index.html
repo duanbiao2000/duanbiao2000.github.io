@@ -1,0 +1,1108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 7.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"duanbiao2000.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="在这个空间里，我们追求技术的自由与开源精神，正如理查德·斯托曼所言：“自由软件关乎自由，而非价格。” 同时，我们也将探索技术的本质，遵循林纳斯·托瓦兹的名言：“创造好点子最简单的方式是先有很多点子。”">
+<meta property="og:type" content="website">
+<meta property="og:title" content="自由之思，开源之行">
+<meta property="og:url" content="https://duanbiao2000.github.io/index.html">
+<meta property="og:site_name" content="自由之思，开源之行">
+<meta property="og:description" content="在这个空间里，我们追求技术的自由与开源精神，正如理查德·斯托曼所言：“自由软件关乎自由，而非价格。” 同时，我们也将探索技术的本质，遵循林纳斯·托瓦兹的名言：“创造好点子最简单的方式是先有很多点子。”">
+<meta property="og:locale" content="en_US">
+<meta property="article:author" content="DevCamb">
+<meta property="article:tag" content="自由软件，开源，MIT，计算机科学，技术，GNU，Linux">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://duanbiao2000.github.io/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : true,
+    isPost : false,
+    lang   : 'en'
+  };
+</script>
+
+  <title>自由之思，开源之行</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+<link rel="alternate" href="/atom.xml" title="自由之思，开源之行" type="application/atom+xml">
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">自由之思，开源之行</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">秉承理查德·斯托曼与林纳斯·托瓦兹的理念</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content index posts-expand">
+            
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://duanbiao2000.github.io/2024/12/09/youtube-gao-ji-sou-suo-ji-qiao/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="DevCamb">
+      <meta itemprop="description" content="在这个空间里，我们追求技术的自由与开源精神，正如理查德·斯托曼所言：“自由软件关乎自由，而非价格。” 同时，我们也将探索技术的本质，遵循林纳斯·托瓦兹的名言：“创造好点子最简单的方式是先有很多点子。”">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="自由之思，开源之行">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2024/12/09/youtube-gao-ji-sou-suo-ji-qiao/" class="post-title-link" itemprop="url">youtube高级搜索技巧</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2024-12-09 10:39:00" itemprop="dateCreated datePublished" datetime="2024-12-09T10:39:00+08:00">2024-12-09</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2025-03-31 20:37:01" itemprop="dateModified" datetime="2025-03-31T20:37:01+08:00">2025-03-31</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Mindset/" itemprop="url" rel="index"><span itemprop="name">Mindset</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>如何在 YouTube 上高效搜索和发现小众但高质量的 AI、编程技术内容以及富有深度的“精英感悟” ?</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2024/12/09/youtube-gao-ji-sou-suo-ji-qiao/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://duanbiao2000.github.io/2024/11/14/agile-methodologies-and-jira-workflows/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="DevCamb">
+      <meta itemprop="description" content="在这个空间里，我们追求技术的自由与开源精神，正如理查德·斯托曼所言：“自由软件关乎自由，而非价格。” 同时，我们也将探索技术的本质，遵循林纳斯·托瓦兹的名言：“创造好点子最简单的方式是先有很多点子。”">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="自由之思，开源之行">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2024/11/14/agile-methodologies-and-jira-workflows/" class="post-title-link" itemprop="url">Agile methodologies and Jira workflows</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2024-11-14 23:39:00" itemprop="dateCreated datePublished" datetime="2024-11-14T23:39:00+08:00">2024-11-14</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2025-03-31 20:37:01" itemprop="dateModified" datetime="2025-03-31T20:37:01+08:00">2025-03-31</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Diary/" itemprop="url" rel="index"><span itemprop="name">Diary</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>Agile methodologies and Jira workflows are closely intertwined in modern software development practices.</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2024/11/14/agile-methodologies-and-jira-workflows/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://duanbiao2000.github.io/2024/11/03/wei-lai-zheng-ming/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="DevCamb">
+      <meta itemprop="description" content="在这个空间里，我们追求技术的自由与开源精神，正如理查德·斯托曼所言：“自由软件关乎自由，而非价格。” 同时，我们也将探索技术的本质，遵循林纳斯·托瓦兹的名言：“创造好点子最简单的方式是先有很多点子。”">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="自由之思，开源之行">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2024/11/03/wei-lai-zheng-ming/" class="post-title-link" itemprop="url">未来证明</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2024-11-03 12:26:00" itemprop="dateCreated datePublished" datetime="2024-11-03T12:26:00+08:00">2024-11-03</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2025-03-31 20:37:01" itemprop="dateModified" datetime="2025-03-31T20:37:01+08:00">2025-03-31</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Diary/" itemprop="url" rel="index"><span itemprop="name">Diary</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>信息过多,反而会降低你的学习效率</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2024/11/03/wei-lai-zheng-ming/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://duanbiao2000.github.io/2024/10/27/qing-xing-si-kao/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="DevCamb">
+      <meta itemprop="description" content="在这个空间里，我们追求技术的自由与开源精神，正如理查德·斯托曼所言：“自由软件关乎自由，而非价格。” 同时，我们也将探索技术的本质，遵循林纳斯·托瓦兹的名言：“创造好点子最简单的方式是先有很多点子。”">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="自由之思，开源之行">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2024/10/27/qing-xing-si-kao/" class="post-title-link" itemprop="url">Clear Thinks</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2024-10-27 12:26:00" itemprop="dateCreated datePublished" datetime="2024-10-27T12:26:00+08:00">2024-10-27</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2025-03-31 20:37:01" itemprop="dateModified" datetime="2025-03-31T20:37:01+08:00">2025-03-31</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Mindset/" itemprop="url" rel="index"><span itemprop="name">Mindset</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>Mastering Clarity in Thought: A Path to Smarter Decisions and Exceptional Thinking</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2024/10/27/qing-xing-si-kao/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://duanbiao2000.github.io/2024/10/26/how-to-stand-out/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="DevCamb">
+      <meta itemprop="description" content="在这个空间里，我们追求技术的自由与开源精神，正如理查德·斯托曼所言：“自由软件关乎自由，而非价格。” 同时，我们也将探索技术的本质，遵循林纳斯·托瓦兹的名言：“创造好点子最简单的方式是先有很多点子。”">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="自由之思，开源之行">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2024/10/26/how-to-stand-out/" class="post-title-link" itemprop="url">How to Stand Out</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2024-10-26 17:26:00" itemprop="dateCreated datePublished" datetime="2024-10-26T17:26:00+08:00">2024-10-26</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2025-03-31 20:37:01" itemprop="dateModified" datetime="2025-03-31T20:37:01+08:00">2025-03-31</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Mindset/" itemprop="url" rel="index"><span itemprop="name">Mindset</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>The key to standing out lies in <strong>self-marketing</strong>.</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2024/10/26/how-to-stand-out/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://duanbiao2000.github.io/2024/10/26/wei-lai-dao-xiang-de-gao-xiao-xue-xi/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="DevCamb">
+      <meta itemprop="description" content="在这个空间里，我们追求技术的自由与开源精神，正如理查德·斯托曼所言：“自由软件关乎自由，而非价格。” 同时，我们也将探索技术的本质，遵循林纳斯·托瓦兹的名言：“创造好点子最简单的方式是先有很多点子。”">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="自由之思，开源之行">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2024/10/26/wei-lai-dao-xiang-de-gao-xiao-xue-xi/" class="post-title-link" itemprop="url">未来导向的高效学习</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2024-10-26 12:26:00" itemprop="dateCreated datePublished" datetime="2024-10-26T12:26:00+08:00">2024-10-26</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2025-03-31 20:37:01" itemprop="dateModified" datetime="2025-03-31T20:37:01+08:00">2025-03-31</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Diary/" itemprop="url" rel="index"><span itemprop="name">Diary</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>不要只解决眼前的学习困难。更聪明的方法是<strong>预测</strong>未来需要什么知识和技能，并提前准备。这就像是升级你的学习“操作系统”，而不是只打补丁。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2024/10/26/wei-lai-dao-xiang-de-gao-xiao-xue-xi/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://duanbiao2000.github.io/2024/10/25/the-art-of-developer-self-marketing/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="DevCamb">
+      <meta itemprop="description" content="在这个空间里，我们追求技术的自由与开源精神，正如理查德·斯托曼所言：“自由软件关乎自由，而非价格。” 同时，我们也将探索技术的本质，遵循林纳斯·托瓦兹的名言：“创造好点子最简单的方式是先有很多点子。”">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="自由之思，开源之行">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2024/10/25/the-art-of-developer-self-marketing/" class="post-title-link" itemprop="url">The Art of Developer Self-Marketing</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2024-10-25 12:27:00" itemprop="dateCreated datePublished" datetime="2024-10-25T12:27:00+08:00">2024-10-25</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2025-03-31 20:37:01" itemprop="dateModified" datetime="2025-03-31T20:37:01+08:00">2025-03-31</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Mindset/" itemprop="url" rel="index"><span itemprop="name">Mindset</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>技术是基础，品牌是放大器，价值沟通是关键。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2024/10/25/the-art-of-developer-self-marketing/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://duanbiao2000.github.io/2024/10/25/lazyvim-an-jian/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="DevCamb">
+      <meta itemprop="description" content="在这个空间里，我们追求技术的自由与开源精神，正如理查德·斯托曼所言：“自由软件关乎自由，而非价格。” 同时，我们也将探索技术的本质，遵循林纳斯·托瓦兹的名言：“创造好点子最简单的方式是先有很多点子。”">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="自由之思，开源之行">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2024/10/25/lazyvim-an-jian/" class="post-title-link" itemprop="url">LazyVim按键绑定</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2024-10-25 12:26:00" itemprop="dateCreated datePublished" datetime="2024-10-25T12:26:00+08:00">2024-10-25</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2025-03-31 20:37:01" itemprop="dateModified" datetime="2025-03-31T20:37:01+08:00">2025-03-31</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Tools/" itemprop="url" rel="index"><span itemprop="name">Tools</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>好的，我们来运用费曼学习法和第一性原理来简化和组织 LazyVim 按键绑定的核心信息，并找出可以精简的冗余内容。</p>
+<p><strong>核心目标：</strong> 快速、高效地在 Vim 中完成常用操作。LazyVim 通过设置一系列快捷键（按键绑定）来实现这一点。</p>
+<p><strong>第一性原理分析 (基本操作需求):</strong></p>
+<p>在编辑器中，最基本的需求是什么？</p>
+<ol>
+<li><strong>移动光标/视图 (Navigation):</strong> 在文件内、窗口间、缓冲区(文件)间、标签页间移动。</li>
+<li><strong>编辑文本 (Editing):</strong> 修改代码、移动代码行、缩进、注释、保存。</li>
+<li><strong>查找信息 (Searching):</strong> 搜索文本、查看代码问题（诊断）。</li>
+<li><strong>管理工作区 (Workspace Management):</strong> 打开/关闭/切换文件(缓冲区)、窗口、标签页。</li>
+<li><strong>与外部工具交互 (Tool Integration):</strong> 使用版本控制 (Git)、终端。</li>
+<li><strong>调整编辑器行为 (Toggling Features):</strong> 开/关某些视觉或编辑辅助功能。</li>
+</ol>
+<p><strong>简化和组织核心洞见 (Feynman 式解释):</strong></p>
+<p>想象一下你在向一个刚接触 LazyVim 的朋友解释这些快捷键：</p>
+<p>“LazyVim 为了让你写代码更快，预设了很多快捷键。你可以把它们想象成游戏里的’热键’。主要分为几大类：”</p>
+<ol>
+<li><p><strong>移动是基础 (<code>&lt;C-hjkl&gt;</code>, <code>j/k</code> 智能移动):</strong></p>
+<ul>
+<li>最常用的是按住 <code>Ctrl</code> 配合 <code>h, j, k, l</code> 在不同的窗口（分屏）之间跳转。</li>
+<li>在代码里上下移动 <code>j, k</code> 会更智能，能更好地处理自动换行。</li>
+</ul>
+</li>
+<li><p><strong>窗口和标签页 (<code>&lt;leader&gt;w</code>, <code>&lt;leader&gt;&lt;tab&gt;</code>):</strong></p>
+<ul>
+<li>所有窗口操作（比如分屏 <code>-</code>/<code>|</code>，关闭 <code>d</code>）都以 <code>&lt;leader&gt;w</code> 开头。</li>
+<li>所有标签页操作（比如新建 <code>&lt;tab&gt;</code>, 关闭 <code>d</code>, 切换 <code>[/]</code>）都以 <code>&lt;leader&gt;&lt;tab&gt;</code> 开头。</li>
+</ul>
+</li>
+<li><p><strong>文件/缓冲区管理 (<code>&lt;S-h/l&gt;</code>, <code>&lt;leader&gt;b</code>):</strong></p>
+<ul>
+<li>用 <code>Shift + h/l</code> 或者 <code>[b / ]b</code> 可以在打开的文件（缓冲区）之间快速切换。</li>
+<li>更多缓冲区操作（如查看列表 <code>b</code>, 删除 <code>d</code>）以 <code>&lt;leader&gt;b</code> 开头。</li>
+</ul>
+</li>
+<li><p><strong>编辑和代码 (<code>&lt;A-j/k&gt;</code>, <code>gc</code>, <code>&lt;C-s&gt;</code>):</strong></p>
+<ul>
+<li>按住 <code>Alt</code> 配合 <code>j</code> 或 <code>k</code> 可以快速上下移动整行代码。</li>
+<li><code>gc</code> 加上一个动作（比如 <code>o</code> 或 <code>O</code>）可以快速添加注释行。</li>
+<li><code>Ctrl + s</code> 就是保存文件。</li>
+</ul>
+</li>
+<li><p><strong>搜索和诊断 (<code>&lt;esc&gt;</code>, <code>n/N</code>, <code>]d/[d</code>, <code>&lt;leader&gt;c</code>):</strong></p>
+<ul>
+<li>搜索后按 <code>Esc</code> 可以清除高亮。</li>
+<li><code>n</code> 和 <code>N</code> 跳转到下一个/上一个搜索结果。</li>
+<li>代码里的错误或警告，用 <code>]d</code> 和 <code>[d</code> (或者 <code>]e/[e</code>, <code>]w/[w</code> 分别对应错误和警告) 来回跳转。</li>
+<li><code>&lt;leader&gt;cd</code> 可以查看当前光标位置的详细诊断信息。</li>
+</ul>
+</li>
+<li><p><strong>Git 和终端 (<code>&lt;leader&gt;g</code>, <code>&lt;leader&gt;f</code>):</strong></p>
+<ul>
+<li>所有 Git 相关操作（比如打开 Lazygit <code>g</code>, 看提交历史 <code>l</code>, 看文件历史 <code>f</code>）基本都以 <code>&lt;leader&gt;g</code> 开头。</li>
+<li>打开终端的操作以 <code>&lt;leader&gt;f</code> 开头（比如 <code>t</code> 或 <code>T</code>）。</li>
+</ul>
+</li>
+<li><p><strong>开关功能 (<code>&lt;leader&gt;u</code>):</strong></p>
+<ul>
+<li>想临时开关某个功能（比如拼写检查 <code>s</code>，自动换行 <code>w</code>，相对行号 <code>L</code>）？试试 <code>&lt;leader&gt;u</code> 后面跟对应的字母。</li>
+</ul>
+</li>
+<li><p><strong>LazyVim 本身 (<code>&lt;leader&gt;l</code>, <code>&lt;leader&gt;L</code>):</strong></p>
+<ul>
+<li>管理 LazyVim 插件用 <code>&lt;leader&gt;l</code>。</li>
+<li>查看 LazyVim 更新日志用 <code>&lt;leader&gt;L</code>。</li>
+</ul>
+</li>
+</ol>
+<p><em>(注：<code>&lt;leader&gt;</code> 键通常是 <code>\</code> 或空格键，可以在配置中查看或修改。)</em></p>
+<p><strong>总结:</strong></p>
+<p>核心是识别出完成 <strong>基本编辑任务</strong> (移动、编辑、查找、管理、工具交互、功能开关) 的 <strong>LazyVim 快捷方式</strong>。通过按 <strong>功能类别</strong> (导航、编辑、窗口管理等) 组织，并使用 <strong>一致的前缀</strong> (<code>&lt;leader&gt;w</code>, <code>&lt;leader&gt;g</code> 等) 作为记忆线索，可以大大简化学习和记忆过程。删除重复的列表、过于细节的解释和相似功能的冗余快捷键，能让笔记更聚焦、更易用。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://duanbiao2000.github.io/2024/10/25/mardown-app-plan/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="DevCamb">
+      <meta itemprop="description" content="在这个空间里，我们追求技术的自由与开源精神，正如理查德·斯托曼所言：“自由软件关乎自由，而非价格。” 同时，我们也将探索技术的本质，遵循林纳斯·托瓦兹的名言：“创造好点子最简单的方式是先有很多点子。”">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="自由之思，开源之行">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2024/10/25/mardown-app-plan/" class="post-title-link" itemprop="url">Markdown App Plan</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2024-10-25 12:26:00" itemprop="dateCreated datePublished" datetime="2024-10-25T12:26:00+08:00">2024-10-25</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2025-03-31 20:37:01" itemprop="dateModified" datetime="2025-03-31T20:37:01+08:00">2025-03-31</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Diary/" itemprop="url" rel="index"><span itemprop="name">Diary</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>探索适用于Mac的顶级Markdown编辑器，旨在提升团队协作和个人写作体验。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2024/10/25/mardown-app-plan/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">DevCamb</p>
+  <div class="site-description" itemprop="description">在这个空间里，我们追求技术的自由与开源精神，正如理查德·斯托曼所言：“自由软件关乎自由，而非价格。” 同时，我们也将探索技术的本质，遵循林纳斯·托瓦兹的名言：“创造好点子最简单的方式是先有很多点子。”</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">9</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2025</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">DevCamb</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
